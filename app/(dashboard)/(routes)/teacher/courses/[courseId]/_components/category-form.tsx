@@ -61,13 +61,13 @@ export const CategoryForm = ({
     (option) => option.value === initialData.categoryId
   );
   return (
-    <div className="mt-6 border bg-red-600 rounded-md p-4">
+    <div className="mt-6 border border-[#643d88] bg-[#181622] rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Category
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-600 hover:bg-red-300">
+          className="bg-[#181622] border border-[#643d88] hover:bg-[#853bce]">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -100,7 +100,7 @@ export const CategoryForm = ({
                   <FormControl>
                     <Label htmlFor="label" className="text-white">
                       Category of magic
-                      <div className="pt-2 bg-red-600">
+                      <div className="pt-2">
                         <Combobox options={options} {...field} />
                       </div>
                     </Label>

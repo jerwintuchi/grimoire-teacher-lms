@@ -58,10 +58,12 @@ const CreatePage = () => {
       <div>
         <h1
           style={{ fontWeight: "bold", fontSize: "1.5em" }}
-          className="text-red-500">
+          className="text-[#853bce]">
           Name the course
         </h1>
-        <p className="text-gray-500">What should be the name of your course?</p>
+        <p className="text-[#643d88]">
+          What should be the name of your course?
+        </p>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
@@ -71,11 +73,11 @@ const CreatePage = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel className="text-red-700">Course Title</FormLabel>
+                  <FormLabel className="text-[#853bce]">Course Title</FormLabel>
                   <FormControl>
                     <Input
-                      className="border border-gray-300 px-3 py-2
-                                         hover:border-red-500 text-red-600
+                      className="border border-[#262046] px-3 py-2
+                                         hover:border-[#643d88] text-[#853bce]
                                          focus:border-red-blue-500
                                          focus:outline-none !important
                                          placeholder-red-400"
@@ -84,7 +86,7 @@ const CreatePage = () => {
                       {...field}
                     />
                   </FormControl>
-                  <FormDescription className="text-red-500">
+                  <FormDescription className="text-[#643d88]">
                     What topic will you teach?
                   </FormDescription>
                   <FormMessage />
@@ -102,7 +104,7 @@ const CreatePage = () => {
               <Button
                 type="submit"
                 disabled={!isValid || isSubmitting}
-                className="text-black bg-green-500 hover:bg-green-700 hover:text-white size-auto">
+                className="text-black bg-[#643d88] hover:bg-green-700 hover:text-white size-auto">
                 Continue
               </Button>
             </div>

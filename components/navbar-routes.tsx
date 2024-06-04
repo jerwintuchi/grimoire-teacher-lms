@@ -23,7 +23,8 @@ const NavbarRoutes = () => {
           <Link href="/">
             <Button
               size="sm"
-              className="text-white bg-red-500 hover:bg-red-800 hover:text-white size-auto">
+              className="text-[#b98ee4] bg-[#291839]
+                    hover:bg-[#853bce] hover:text-white border-red-900 size-auto">
               <LogOut className="h-4 w-4 mr-2" />
               Back to Student Mode
             </Button>
@@ -37,8 +38,8 @@ const NavbarRoutes = () => {
               <Button
                 size="sm"
                 variant="ghost"
-                className="text-black bg-red-500 
-                    hover:bg-white hover:text-white-300 border-red-900 size-auto">
+                className="text-[#b98ee4] bg-[#291839]
+                    hover:bg-[#853bce] hover:text-white border-red-900 size-auto">
                 Teacher Mode
               </Button>
             </Link>

@@ -78,7 +78,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                 ✔ Completed {completionText} fields
               </span>
             ) : (
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-[#643d88]">
                 Complete {completionText} fields to publish your Course
               </span>
             )}
