@@ -101,7 +101,7 @@ const AboutPage = () => {
 
       <section className="call-to-action">
         <div className="cta-container flex justify-center items-center px-20 py-8 bg-[#291839] text-white">
-          <h3 className="text-xl font-bold mb-2 mr-64">
+          <h3 className="text-xl font-bold mr-64">
             Ready to empower your magical journey experience?
             <div className="pt-6">
               <Link href="/sign-up">

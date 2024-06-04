@@ -9,10 +9,10 @@ export const MobileSidebar = () => {
       <SheetTrigger className="md:hidden pr-4 hover:opacity-75 transition text-white">
         <Menu />
       </SheetTrigger>
-      <SheetContent side="left" className="p-0 bg-white">
+      <SheetContent side="left" className="p-0 bg-[#13111c]">
         <div className="flex flex-items-center justify-center">
           <Logo />
-          <div className="mr-auto mt-auto mb-auto text-size-xs text-red-700 font-bold">
+          <div className="mr-auto mt-auto mb-auto text-size-xs text-[#b98ee4] font-bold">
             © 2024 Grimoire.
           </div>
         </div>
