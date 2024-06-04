@@ -5,7 +5,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <MainNav />
-      <div className="h-[calc(100vh-40px)] flex items-center justify-center bg-black no-scroll">
+      <div className="h-[calc(100vh-72px)] flex items-center justify-center bg-black no-scroll">
         {children}
       </div>
     </>

@@ -6,11 +6,13 @@ import Image from "next/image";
 
 const AboutPage = () => {
   return (
-    <div className="about-page bg-black">
+    <div className="about-page bg-black ">
       <MainNav />
 
       <section className="hero flex flex-col justify-center items-center h-screen">
-        <img
+        <Image
+          width={150} // specify the width
+          height={150} // specify the height
           src="/book-open.svg"
           alt="Book Icon"
           className="book-image justify-center h-20 w-20 pb-5"

@@ -5,7 +5,7 @@ export const Logo = () => {
     <Image
       height={100}
       width={100}
-      priority={false}
+      priority={true}
       alt="logo"
       src="/grimoire-icon-white(small).png"
     />
