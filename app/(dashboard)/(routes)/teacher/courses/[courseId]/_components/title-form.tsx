@@ -60,13 +60,13 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
   };
 
   return (
-    <div className="mt-6 border bg-red-500 rounded-md p-4">
+    <div className="mt-6 border bg-[#09090b] rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Title
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-500 hover:bg-red-300">
+          className="bg-[#09090b] hover:bg-[#151518] hover:text-[#151518]">
           {isEditing ? (
             <>Cancel</>
           ) : (

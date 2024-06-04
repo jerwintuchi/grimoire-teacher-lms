@@ -2,10 +2,6 @@
 import {
   BarChart2Icon,
   Layout,
-  List,
-  ListCollapse,
-  ListFilter,
-  ListXIcon,
   LucideIcon,
   Search,
   TableProperties,

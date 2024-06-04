@@ -17,7 +17,6 @@ const LandingPage = () => {
             alt="Logo"
             className="pb-16 h-auto w-auto mb-4"
           />
-          <h1 className="text-4xl">Welcome to Our Website!</h1>
         </div>
       </div>
     </div>

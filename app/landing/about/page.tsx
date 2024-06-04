@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const AboutPage = () => {
   return (
-    <div className="about-page bg-black ">
+    <div className="about-page bg-[#13111c] ">
       <MainNav />
 
       <section className="hero flex flex-col justify-center items-center h-screen">
@@ -18,7 +18,7 @@ const AboutPage = () => {
           className="book-image justify-center h-20 w-20 pb-5"
         />
         <div className="hero-content w-full mx-auto max-w-screen-lg">
-          <h1 className="text-3xl font-bold text-red-700 mb-4 text-center pb-10">
+          <h1 className="text-3xl font-bold text-[#b98ee4] mb-4 text-center pb-10">
             Unlock Your Potential Within Grimoire
           </h1>
           <p className="text-lg text-white mb-4 px-20 indent-16">
@@ -52,13 +52,13 @@ const AboutPage = () => {
       </section>
 
       <section className="benefits pb-5">
-        <h2 className="text-2xl font-bold text-red-700 mb-4 text-center justify-center pb-20">
+        <h2 className="text-2xl font-bold text-[#b98ee4] mb-4 text-center justify-center pb-20">
           Benefits of Grimoire
         </h2>
         <div className="benefits-grid grid grid-cols-1 md:grid-cols-2 gap-x-48 gap-y-10 px-20 ml-10 mb-10">
           <div className="benefit">
             <i className="fas fa-check-circle text-white text-3xl mb-2"></i>
-            <h3 className="text-lg font-medium text-red-700 mb-2">
+            <h3 className="text-lg font-medium text-[#b98ee4] mb-2">
               Increased Magical Engagement
             </h3>
             <p className="text-base text-white">
@@ -69,7 +69,7 @@ const AboutPage = () => {
           </div>
           <div className="benefit">
             <i className="fas fa-chart-line text-white text-3xl mb-2"></i>
-            <h3 className="text-lg font-medium text-red-700 mb-2">
+            <h3 className="text-lg font-medium text-[#b98ee4] mb-2">
               Improved Arcane Mastery
             </h3>
             <p className="text-base text-white">
@@ -80,7 +80,7 @@ const AboutPage = () => {
           </div>
           <div className="benefit">
             <i className="fas fa-users text-white text-3xl mb-2"></i>
-            <h3 className="text-lg font-medium text-red-700 mb-2">
+            <h3 className="text-lg font-medium text-[#b98ee4] mb-2">
               Streamlined Spellcasting Knowledge
             </h3>
             <p className="text-base text-white">
@@ -94,20 +94,20 @@ const AboutPage = () => {
         </div>
       </section>
 
-      <p className="text-sm text-red-700 text-center mb-4">
+      <p className="text-sm text-[#b98ee4] text-center mb-4">
         Contact us to learn more about how our Grimoire can empower your magical
         journey. (+63) 91234567891
       </p>
 
       <section className="call-to-action">
-        <div className="cta-container flex justify-center items-center px-20 py-8 bg-red-900 text-white">
+        <div className="cta-container flex justify-center items-center px-20 py-8 bg-[#291839] text-white">
           <h3 className="text-xl font-bold mb-2 mr-64">
             Ready to empower your magical journey experience?
             <div className="pt-6">
               <Link href="/sign-up">
                 <Button
                   variant="ghost"
-                  className="bg-red-700 hover:bg-red-600 text-white font-bold px-4 rounded-md">
+                  className="bg-[#853bce] hover:bg-[#b98ee4] text-white font-bold px-4 rounded-md">
                   Start Your Free Trial
                 </Button>
               </Link>

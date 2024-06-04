@@ -4,9 +4,9 @@ import MainNav from "../landing/mainnav";
 const AuthLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <div className="bg-black">
+      <div className="bg-[#13111c]">
         <MainNav />
-        <div className="h-[calc(100vh-72px)] flex items-center justify-center bg-black no-scroll">
+        <div className="h-[calc(100vh-72px)] flex items-center justify-center bg-[#13111c] no-scroll">
           {children}
         </div>
       </div>

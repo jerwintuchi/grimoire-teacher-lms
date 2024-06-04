@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+
 const { withUt } = require("uploadthing/tw");
 
 module.exports = withUt({
@@ -19,6 +20,10 @@ module.exports = withUt({
     },
     extend: {
       colors: {
+        dark: "151518",
+        darker: "09090b",
+        grimred: "b91c1c",
+        grimredder: "#8D1717",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

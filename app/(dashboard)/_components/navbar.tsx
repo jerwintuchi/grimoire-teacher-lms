@@ -4,7 +4,7 @@ import { MobileSidebar } from "./mobile-sidebar";
 export const Navbar = () => {
   return (
     //NAVBAR WITH THE AVATARBOX
-    <div className="p-4 h-full flex items-center bg-red-700 shadow-sm">
+    <div className="p-6 h-full flex items-center shadow-sm backdrop-filter backdrop-blur-sm">
       <MobileSidebar />
       <NavbarRoutes />
     </div>

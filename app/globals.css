@@ -123,10 +123,10 @@ body {
 }
 /* the one behind the front card*/
 .cl-cardBox{
-  background-color: #b91c1c;
+  background-color: #181622;
   padding-bottom: 10px;
   border-radius: 45px 45px 0px 0px;
-  border: 3px solid #000000;
+  border: 1px solid #FFFFFF;
 }
 .cl-internal-rk8nkz {
   background-color: #8D1717;
@@ -135,7 +135,7 @@ body {
 }
 .cl-card {
   /* card container */
-  background-color: #8D1717;
+  background-color: #181622;
   border-radius: 40px 40px 0px 0px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   padding: 20px;
@@ -144,14 +144,19 @@ body {
 
 .cl-logoImage {
   /* logo image */
+  margin-top: 10px;
   width: 60%;
   height: auto;
   transition: box-shadow 0.3s ease-in-out;
-  border-radius: 25%;
+  border-radius: 40%;
 }
 .cl-logoImage:hover {
   /* logo image */
-  box-shadow: 0 5px 20px #ff2d2d80;
+  box-shadow: 0 0px 70px #b98ee4;
+}
+.cl-logoImage:active {
+  /* logo image */
+  box-shadow: 0 0px 70px #ffffff;
 }
 
 .cl-formFieldInfoText {
@@ -172,20 +177,20 @@ body {
   /* header title */
   font-size: 20px;
   font-weight: bold;
-  color: #ffffff;
+  color: #853bce ;
 }
 
 .cl-headerSubtitle {
   /* header subtitle */
   font-size: 14px;
-  color: #c0bebe;
+  color: #b98ee4 ;
 }
 
 /*------------------SIGNIN----CARD-------------------------------------*/
 /* BUTTON STYLING */
 .cl-socialButtonsBlockButton {
   /*GOOGLE BUTTON*/
-  background-color: #700909 ;
+  background-color: #291839 ;
   color: #ffffff;
     padding: 10px 20px;
     border: none;
@@ -195,13 +200,13 @@ body {
 
 
 .cl-socialButtonsBlockButton:hover {
-  background-color: #d60c0c;
+  background-color: #853bce ;
 }
 
 /* DIVIDER STYLING */
 .cl-dividerLine {
   /* divider line */
-  border-top: 2px solid #9e9e9e;
+  border-top: 2px solid #181622 ;
 }
 
 .cl-dividerText {
@@ -221,14 +226,14 @@ body {
 .cl-formFieldInput {
   /* field input */
   padding: 8px;
-  border: 3px solid #ccc;
+  border: 3px solid #181622;
   border-radius: 30px;
 }
 
 /* PRIMARY BUTTON STYLING */
 .cl-formButtonPrimary {
   /* button */
-  background-color: #8b3706;
+  background-color: #853bce  ;
   color: #fff;
   padding: 10px 20px;
   border: none;
@@ -238,11 +243,11 @@ body {
 
 .cl-formButtonPrimary:hover {
   /*hover styles for the primary button */
-  background-color: #8D1717;
+  background-color: #b98ee4;
 }
 
 .cl-footer {
-  background-color: #490D0D;
+  background-color: #d38f8f;
   /*border-radius: 0px 0px 20px 20px;*/
 }
 /* Hides the "Secured by Clerk" element */

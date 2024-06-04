@@ -12,37 +12,37 @@ import {
 
 const MainNav = () => {
   return (
-    <nav className="bg-transparent backdrop-filter backdrop-blur-sm text-white p-4 sticky top-0 z-50">
-      <div className="flex justify-start">
+    <nav className="bg-transparent backdrop-filter backdrop-blur-sm text-white p-2 sticky top-0 z-50">
+      <div className="flex justify-start p-2">
         <Link href="/landing">
-          <Button variant="ghost" className="hover:bg-red-600 ">
+          <Button variant="ghost" className="hover:bg-[#853bce] ">
             Home
           </Button>
         </Link>
         <Link href="/landing/about">
-          <Button variant="ghost" className="hover:bg-red-600 ">
+          <Button variant="ghost" className="hover:bg-[#853bce]  ">
             About
           </Button>
         </Link>
 
         {/* FOR SIGN UP BUTTONS */}
         <NavigationMenu>
-          <NavigationMenuList className="bg-red-700">
-            <NavigationMenuItem className="bg-red-700">
-              <NavigationMenuTrigger className="bg-red-500 hover:bg-red-600">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className=" bg-[#853bce] ">
                 Start Now
               </NavigationMenuTrigger>
-              <NavigationMenuContent className="bg-red-700">
+              <NavigationMenuContent className="bg-[#291839]">
                 <NavigationMenuLink>
                   <Link href="/sign-in">
-                    <Button className="bg-red-700 hover:bg-orange-600 hover:text-white">
+                    <Button className="bg-[#291839] hover:bg-[#853bce] hover:text-black w-full">
                       Sign In
                     </Button>
                   </Link>
                 </NavigationMenuLink>
                 <NavigationMenuLink>
                   <Link href="/sign-up">
-                    <Button className="bg-red-700 hover:bg-orange-600 hover:text-white">
+                    <Button className="bg-[#291839] hover:bg-[#853bce] hover:text-black">
                       Register
                     </Button>
                   </Link>

@@ -71,7 +71,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     <div className="p-6 grow">
       <div className="flex items-center justify-between">
         <div className="flex flex-col gap-y-2">
-          <h1 className="text-2xl font-medium text-red-700">Course Creation</h1>
+          <h1 className="text-2xl font-medium text-white">Course Creation</h1>
           <span className="text-sm text-red-500">
             {isCompleted ? (
               <span className="text-sm text-green-500 font-bold">
@@ -87,10 +87,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
         <div>
-          <div className="flex items-center gap-x-2 text-red-500">
-            <IconBadge icon={LayoutDashboard} />
-            <h2>Describe your Course</h2>
-          </div>
+          <div className="flex items-center gap-x-2 text-white "></div>
           <TitleForm initialData={course} courseId={course.id} />
           <DescriptionForm initialData={course} courseId={course.id} />
           <ImageForm initialData={course} courseId={course.id} />
@@ -105,22 +102,13 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         </div>
         <div className="space-y-6">
           <div>
-            <div className="flex items-center gap-x-2 text-red-500">
-              <IconBadge icon={ListChecks} />
-              <h2 className="text-red-500 text-xl">Course Chapters</h2>
-            </div>
+            <div className="flex items-center gap-x-2 text-red-500"></div>
             <ChaptersForm initialData={course} courseId={course.id} />
           </div>
-          <div className="flex items-center gap-x-2 text-yellow-500">
-            <IconBadge icon={CircleDollarSign} />
-            <h2 className="text-red-500 text-xl">Course Pricing</h2>
-          </div>
+          <div className="flex items-center gap-x-2 text-yellow-500"></div>
           <PriceForm initialData={course} courseId={course.id} />
           <div>
-            <div className="flex items-center gap-x-2 text-yellow-500">
-              <IconBadge icon={File} />
-              <h2 className="text-red-500 text-xl">File Attachments</h2>
-            </div>
+            <div className="flex items-center gap-x-2 text-yellow-500"></div>
             <AttachmentForm initialData={course} courseId={course.id} />
           </div>
         </div>
