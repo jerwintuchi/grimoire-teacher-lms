@@ -2,7 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { db } from "@/lib/db";
 import Link from "next/link";
-import { ArrowLeftIcon, FileVideo, LucideLayoutDashboard } from "lucide-react";
+import { ArrowLeftIcon, CircleAlertIcon, FileVideo } from "lucide-react";
 import { IconBadge } from "@/components/ui/icon-badge";
 
 import ChapterTitleForm from "./_components/chapter-title-form";
@@ -12,6 +12,7 @@ import ChapterVideoForm from "./_components/chapter-video-form";
 import Banner from "@/components/banner";
 import toast from "react-hot-toast";
 import { ChapterActions } from "./_components/chapter-actions";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const chapterIdPage = async ({
   params,
@@ -46,10 +47,21 @@ const chapterIdPage = async ({
   return (
     <div className="w-full mb-4">
       {!chapter.isPublished && (
-        <Banner
-          variant="warning"
-          label="Chapter is not yet published. This chapter will not be visible in the course"
-        />
+        // <Banner
+        //   variant="warning"
+        //   label="Chapter is not yet published. This chapter will not be visible in the course"
+        // />
+        <Alert className="bg-purple-400 border border-orange-400">
+          <div className="flex items-center">
+            <CircleAlertIcon className="h-4 w-4" />
+            <AlertTitle>
+              <AlertDescription className="h-4 pl-2">
+                Chapter is not yet published. This chapter will not be visible
+                in the course
+              </AlertDescription>
+            </AlertTitle>
+          </div>
+        </Alert>
       )}
       <div className="p-6">
         <div className="flex items-center justify-between">

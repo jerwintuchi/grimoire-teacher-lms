@@ -68,11 +68,12 @@ export const ChapterVisibility = ({
               <FormItem className="flex items-center space-x-3">
                 <FormControl>
                   <Toggle
+                    className="rounded-full data-[state=on]:bg-[#b98ee4] hover:bg-gray-500/30"
                     type="submit"
                     pressed={field.value}
                     onPressedChange={field.onChange}>
                     {field.value ? (
-                      <Eye className="text-green-500" />
+                      <Eye className="text-[#291839]" />
                     ) : (
                       <EyeOff className="text-gray-500" />
                     )}
@@ -82,7 +83,7 @@ export const ChapterVisibility = ({
                   key={fadeKey}
                   className="text-sm mt-2 transition-opacity duration-500 ease-in-out opacity-100">
                   {field.value ? (
-                    <div className="text-green-500">
+                    <div className="text-[#b98ee4]">
                       This Chapter is visible for preview
                     </div>
                   ) : (
