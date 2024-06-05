@@ -2,9 +2,9 @@
 import {
   BarChart2Icon,
   Layout,
+  LibraryBig,
   LucideIcon,
   Search,
-  TableProperties,
 } from "lucide-react";
 import { SidebarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
@@ -30,7 +30,7 @@ const guestRoutes = [
 
 const teacherRoutes = [
   {
-    Icon: TableProperties, // Teacher Icon Courses
+    Icon: LibraryBig, // Teacher Icon Courses
     label: "Courses",
     href: "/teacher/courses",
   },

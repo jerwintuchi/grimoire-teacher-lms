@@ -5,7 +5,7 @@ const Sidebar = () => {
   return (
     <>
       <div className="h-full flex border-[#291839] flex-col overflow-y-auto bg-[#13111c] shadow-sm">
-        <div className="p-4 text-white border-radius-3xl flex items-center">
+        <div className="p-4 text-white  flex items-center">
           Your Rank is (chuchuchu)
         </div>
         <div className="flex flex-col w-full">
