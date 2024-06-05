@@ -64,10 +64,11 @@ export const ChapterTitleForm = ({
   };
 
   return (
-    <div className="mt-6 border bg-red-500 rounded-md p-4">
+    <div className="mt-6 border border-[#853bce] bg-[#181622] rounded-md p-4">
       <div className="text-white font-medium drop-shadow-lg">
+        <div className="pb-4 text-white">Chapter Title</div>
         {!isEditing && (
-          <p className="text-sm-2 text-white">{initialData.title}</p>
+          <p className="text-sm-2 text-[#b98ee4]">{initialData.title}</p>
         )}
         {isEditing && (
           <Form {...form}>
@@ -84,10 +85,10 @@ export const ChapterTitleForm = ({
                         disabled={isSubmitting}
                         placeholder="e.g. Introduction to course"
                         {...field}
-                        className="border border-red-700 px-3 py-2 text-red-700"
+                        className="border border-red-700 px-3 py-2 text-[#853bce]"
                       />
                     </FormControl>
-                    <FormMessage className="text-red-500 drop-shadow-sm" />
+                    <FormMessage className="text-[red-500] drop-shadow-sm" />
                   </FormItem>
                 )}
               />
@@ -105,7 +106,7 @@ export const ChapterTitleForm = ({
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="mt-4 bg-red-500 hover:bg-red-300">
+          className="mt-4 border hover:text-white border-[#853bce] bg-[#181622] hover:bg-[#853bce]">
           {isEditing ? (
             <>Cancel</>
           ) : (

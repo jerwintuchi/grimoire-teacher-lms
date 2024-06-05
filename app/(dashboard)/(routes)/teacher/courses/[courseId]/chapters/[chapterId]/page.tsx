@@ -56,13 +56,13 @@ const chapterIdPage = async ({
           <div className="w-full">
             <Link
               href={`/teacher/courses/${params.courseId}`}
-              className="flex items-center text-sm hover:opacity-80 mb-6 text-red-600 hover:text-red-800">
+              className="flex items-center text-sm hover:opacity-80 mb-6 text-[#b98ee4] hover:text-[#853bce]">
               <ArrowLeftIcon className="h-4 w-4 mr-2" />
               Back to Course Edit
             </Link>
             <div className="flex items-center justify-between w-full">
               <div className="flex flex-col gap-y-2">
-                <h1 className="text-2xl font-medium text-red-700">
+                <h1 className="text-2xl font-medium text-[#b98ee4]">
                   Chapter Creation
                 </h1>
                 {isCompleted ? (
@@ -70,7 +70,7 @@ const chapterIdPage = async ({
                     ✔ Completed {completionText} fields
                   </span>
                 ) : (
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-[#853bce]">
                     Completed {completionText} fields
                   </span>
                 )}
@@ -93,10 +93,6 @@ const chapterIdPage = async ({
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div className="space-y-4">
-            <div className="flex items-center gap-x-2 text-red-700">
-              <IconBadge icon={LucideLayoutDashboard} />
-              <h2 className="text-xl">Customize Chapter</h2>
-            </div>
             <ChapterTitleForm
               initialData={chapter}
               courseId={params.courseId}
@@ -109,7 +105,7 @@ const chapterIdPage = async ({
             />
           </div>
           <div>
-            <div className="flex items-center gap-x-2 text-red-600">
+            <div className="flex items-center gap-x-2 text-[#853bce]">
               <IconBadge icon={FileVideo} />
               <h2 className="text-xl">Upload Video</h2>
             </div>

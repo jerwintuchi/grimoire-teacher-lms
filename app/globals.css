@@ -275,7 +275,7 @@ body {
 
   .ql-container {
     font-size: 16px !important;
-    color:#FFFFFF !important;
+    color:#b98ee4 !important; /* previously #FFFFFF*/
   }
   
 @import "~@uploadthing/react/styles.css"

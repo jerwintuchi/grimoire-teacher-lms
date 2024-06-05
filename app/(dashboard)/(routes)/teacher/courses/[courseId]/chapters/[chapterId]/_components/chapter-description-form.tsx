@@ -65,13 +65,13 @@ export const ChapterDescriptionForm = ({
   };
 
   return (
-    <div className="mt-6 border bg-red-500 rounded-md p-4">
+    <div className="mt-6 border border-[#853bce] bg-[#181622] rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Chapter Details
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-500 hover:bg-red-300 ml-6">
+          className="bg-[#181622] border border-[#853bce] hover:bg-[#853bce] hover:text-white hover:border-[#853bce] ml-6">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -107,7 +107,7 @@ export const ChapterDescriptionForm = ({
                   <FormControl>
                     <Editor {...field} />
                   </FormControl>
-                  <FormMessage className="text-red-500 drop-shadow-sm" />
+                  <FormMessage className="text-[#b98ee4] drop-shadow-sm" />
                 </FormItem>
               )}
             />

@@ -73,33 +73,27 @@ export const ChaptersList = ({
                 {(provided) => (
                   <div
                     className={cn(
-                      "flex items-center gap-x-2 bg-red-400 border-2 border-red-300 text-white rounded-md mb-4 text-sm",
-                      chapter.isPublished && "bg-red-600 text-white"
+                      "flex items-center gap-x-2 bg-[#181622] border-2 border-[#853bce] text-white rounded-md mb-4 text-sm p-3 hover:bg-[#853bce]",
+                      chapter.isPublished && "bg-[#291839] text-white"
                     )}
                     ref={provided.innerRef}
-                    {...provided.draggableProps}>
-                    <div
-                      className={cn(
-                        "px-2 py-3  hover:bg-red-900 rounded-l-md transition",
-                        chapter.isPublished &&
-                          "border-r-red-600 bg-red-600 text-white hover:bg-red-600"
-                      )}
-                      {...provided.dragHandleProps}>
-                      <DragHandleDots2Icon className="h-5 w-5" />
-                    </div>
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}>
                     {chapter.title}
                     <div className="ml-auto pr-2 flex items-center gap-x-2">
                       {chapter.isFree && <Badge>Free</Badge>}
-                      <Badge
-                        className={cn(
-                          "bg-gray-500",
-                          chapter.isPublished && "bg-red-600"
-                        )}>
-                        {chapter.isPublished ? "Published" : "Draft"}
-                      </Badge>
-                      <PenBoxIcon
-                        onClick={() => onEdit(chapter.id)}
-                        className="w-4 h-4 cursor-pointer hover:opacity-75 transition"></PenBoxIcon>
+                      <div className="flex items-center gap-2">
+                        <Badge
+                          className={cn(
+                            "bg-gray-500",
+                            chapter.isPublished && "bg-[#853bce]"
+                          )}>
+                          {chapter.isPublished ? "Published" : "Draft"}
+                        </Badge>
+                        <PenBoxIcon
+                          onClick={() => onEdit(chapter.id)}
+                          className="w-4 h-4 cursor-pointer hover:text-[#291839] transition"></PenBoxIcon>
+                      </div>
                     </div>
                   </div>
                 )}

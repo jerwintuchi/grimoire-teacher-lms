@@ -71,13 +71,13 @@ export const AttachmentForm = ({
   };
 
   return (
-    <div className="mt-6 border bg-red-500 rounded-md p-4">
+    <div className="mt-6 border border-[#643d88] bg-[#181622] rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between pb-4">
         Course Attachments
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-500 hover:bg-red-300">
+          className="bg-[#181622] border border-[#643d88] hover:text-white hover:bg-[#853bce]">
           {isEditing && <>Cancel</>}
           {!isEditing && (
             <>

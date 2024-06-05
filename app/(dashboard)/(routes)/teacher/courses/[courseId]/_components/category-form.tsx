@@ -81,7 +81,7 @@ export const CategoryForm = ({
       {!isEditing && (
         <p
           className={cn(
-            "text-sm mt-2 text-white border-white border-2 rounded-full px-2 py-1 inline-block font-medium",
+            "text-sm mt-2 text-[#853bce] border-[#853bce] border-2 rounded-full px-2 py-1 inline-block font-medium",
             !initialData.categoryId && "text-slate-500 italic"
           )}>
           {selectedOption?.label || "No Category yet."}

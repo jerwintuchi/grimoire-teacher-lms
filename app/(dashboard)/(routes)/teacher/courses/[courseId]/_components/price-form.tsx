@@ -55,13 +55,13 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
   };
 
   return (
-    <div className="mt-6 border bg-red-500 rounded-md p-4">
+    <div className="mt-6 border border-[#643d88] bg-[#181622] rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
         Course Price
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-red-500 hover:bg-red-300">
+          className="bg-[#181622] border border-[#853bce] hover:text-white hover:bg-[#853bce]">
           {isEditing ? (
             <>Cancel</>
           ) : (
@@ -100,7 +100,7 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
                         disabled={isSubmitting}
                         placeholder="How much is this course?&nbsp;"
                         {...field}
-                        className="border border-red-700 px-3 py-4 text-red-700"
+                        className="border border-[#291839]px-3 py-4 text-[#b98ee4]"
                       />
                     </Label>
                   </FormControl>

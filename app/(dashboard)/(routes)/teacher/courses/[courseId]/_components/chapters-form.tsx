@@ -79,7 +79,7 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
   };
 
   return (
-    <div className="relative mt-6 border bg-red-500 rounded-md p-4">
+    <div className="relative mt-6 border border-[#853bce] bg-[#181622] rounded-md p-4">
       {isUpdating && (
         <div className="absolute h-full w-full text-white bg-gray-500/20 top-0 right-0 rounded-md flex items-center justify-center">
           Reordering...
@@ -91,7 +91,7 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
         <Button
           onClick={toggleCreating}
           variant="outline"
-          className="bg-red-500 hover:bg-red-300">
+          className="bg-[#181622] border border-[#853bce] hover:bg-[#853bce] hover:text-white">
           {isCreating ? (
             <>Cancel</>
           ) : (
@@ -113,13 +113,13 @@ export const ChaptersForm = ({ initialData, courseId }: ChaptersFormProps) => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Label htmlFor="label" className="text-gray-600">
+                    <Label htmlFor="label" className="text-[#b98ee4]">
                       Chapter Description
                       <Input
                         disabled={isSubmitting}
                         placeholder="e.g. Chapter 1 Introduction&nbsp;"
                         {...field}
-                        className="border border-red-700 px-3 py-4 text-red-700"
+                        className="border border-[#853bce] px-3 py-4 text-[#853bce]"
                       />
                     </Label>
                   </FormControl>
