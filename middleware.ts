@@ -21,8 +21,8 @@ export default clerkMiddleware(
         }
       }
     }
-  }
-  //{ debug: true }
+  },
+  { debug: true }
 );
 
 const isProtectedRoute = createRouteMatcher([
