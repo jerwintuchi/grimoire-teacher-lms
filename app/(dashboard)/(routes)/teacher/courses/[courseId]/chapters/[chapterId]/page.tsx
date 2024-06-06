@@ -9,8 +9,7 @@ import ChapterTitleForm from "./_components/chapter-title-form";
 import ChapterDescriptionForm from "./_components/chapter-description-form";
 import ChapterVisibility from "./_components/chapter-visibility-component";
 import ChapterVideoForm from "./_components/chapter-video-form";
-import Banner from "@/components/banner";
-import toast from "react-hot-toast";
+
 import { ChapterActions } from "./_components/chapter-actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 

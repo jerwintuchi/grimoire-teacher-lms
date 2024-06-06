@@ -25,9 +25,11 @@ model User {
 }
 
 model Course {
-  id          String  @id @default(uuid())
-  userId      String //this is from clerk
-  title       String  @db.Text
+  id     String @id @default(uuid())
+  userId String //this is from clerk
+  title  String @unique @db.Text
+  code   String @unique @db.Text
+
   description String? @db.Text
   imageUrl    String? @db.Text
   price       Float?
@@ -77,6 +79,8 @@ model Chapter {
 
   muxData MuxData?
 
+  quiz Quiz?
+
   courseId String
   course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
 
@@ -86,6 +90,30 @@ model Chapter {
   updatedAt DateTime @updatedAt
 
   @@index([courseId])
+}
+
+model Quiz {
+  id        String     @id @default(uuid())
+  title     String
+  chapterId String     @unique
+  chapter   Chapter    @relation(fields: [chapterId], references: [id], onDelete: Cascade)
+  questions Question[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Question {
+  id      String @id @default(uuid())
+  text    String
+  options Json // Storing options as JSON, including the correct answer
+  quizId  String
+  quiz    Quiz   @relation(fields: [quizId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@index([quizId])
 }
 
 model MuxData {

@@ -2,13 +2,6 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
-import {
-  CircleDollarSign,
-  File,
-  LayoutDashboard,
-  ListChecks,
-  ListCollapseIcon,
-} from "lucide-react";
 import { IconBadge } from "@/components/ui/icon-badge";
 
 import TitleForm from "./_components/title-form";
@@ -18,6 +11,7 @@ import CategoryForm from "./_components/category-form";
 import PriceForm from "./_components/price-form";
 import AttachmentForm from "./_components/attachment-form";
 import ChaptersForm from "./_components/chapters-form";
+import CodeForm from "./_components/code-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -56,6 +50,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
 
   const requiredFields = [
     course.title,
+    course.code,
     course.description,
     course.imageUrl,
     course.price,
@@ -89,6 +84,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         <div>
           <div className="flex items-center gap-x-2 text-white "></div>
           <TitleForm initialData={course} courseId={course.id} />
+          <CodeForm initialData={course} courseId={course.id} />
           <DescriptionForm initialData={course} courseId={course.id} />
           <ImageForm initialData={course} courseId={course.id} />
           <CategoryForm

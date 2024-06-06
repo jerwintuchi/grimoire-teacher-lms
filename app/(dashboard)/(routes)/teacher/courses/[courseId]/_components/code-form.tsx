@@ -11,42 +11,45 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Pen } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
-import { Course } from "@prisma/client";
-import { Input } from "@/components/ui/input";
-import { formatPrice } from "@/lib/format";
-interface PriceFormProps {
-  initialData: Course;
+interface CodeFormProps {
+  initialData: {
+    code: string;
+  };
   courseId: string;
 }
 
 const formSchema = z.object({
-  price: z.coerce.number(),
+  code: z
+    .string()
+    .min(1, {
+      message: "Course Code is required",
+    })
+    .max(6 - 10, {
+      message: "Course code must be 6-10 characters long",
+    }),
 });
 
-export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
+export const CodeForm = ({ initialData, courseId }: CodeFormProps) => {
   const [isEditing, setIsediting] = useState(false);
 
   const toggleEdit = () => setIsediting((current) => !current);
   const router = useRouter();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      price: initialData?.price || undefined,
-    },
+    defaultValues: initialData,
   });
 
   const { isSubmitting, isValid } = form.formState;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course Price Updated");
+      toast.success("Course code updated");
       toggleEdit();
       router.refresh();
     } catch {
@@ -57,29 +60,23 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
   return (
     <div className="mt-6 border border-[#643d88] bg-[#181622] rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium flex items-center justify-between">
-        Course Price
+        Course Code
         <Button
           onClick={toggleEdit}
           variant="outline"
-          className="bg-[#181622] border border-[#853bce] hover:text-white hover:bg-[#853bce]">
+          className="bg-[#181622] border-[#643d88] hover:bg-[#853bce] hover:text-white">
           {isEditing ? (
             <>Cancel</>
           ) : (
             <>
               <Pen className="h-4 w-4 mr-2"></Pen>
-              Set Price
+              Edit Code
             </>
           )}
         </Button>
       </div>
       {!isEditing && (
-        <p
-          className={cn(
-            "text-sm mt-2 text-[#b98ee4]",
-            !initialData.price && "text-[#853bce] italic"
-          )}>
-          {initialData.price ? formatPrice(initialData.price) : "Free"}
-        </p>
+        <p className="text-sm-2 text-white ">"{initialData.code}"</p>
       )}
       {isEditing && (
         <Form {...form}>
@@ -88,21 +85,16 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
             className="space-y-4 mt-4">
             <FormField
               control={form.control}
-              name="price"
+              name="code"
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Label htmlFor="label" className="text-gray-600">
-                      Price
-                      <Input
-                        type="number"
-                        step="0.01"
-                        disabled={isSubmitting}
-                        placeholder="How much is this course?&nbsp;"
-                        {...field}
-                        className="border border-[#853bce] px-3 py-4 text-[#b98ee4] bg-[#13111c] ring-[#b98ee4]"
-                      />
-                    </Label>
+                    <Input
+                      disabled={isSubmitting}
+                      placeholder="e.g. 'CSC101' or 'CSC102'..."
+                      {...field}
+                      className="border border-[#262046] px-3 py-2 text-[#853bce]"
+                    />
                   </FormControl>
                   <FormMessage className="text-red-500 drop-shadow-sm" />
                 </FormItem>
@@ -113,7 +105,7 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
                 className="w-full bg-green-600 text-white hover:bg-green-500"
                 disabled={isSubmitting || !isValid}
                 type="submit">
-                Set Price
+                Save
               </Button>
             </div>
           </form>
@@ -123,4 +115,4 @@ export const PriceForm = ({ initialData, courseId }: PriceFormProps) => {
   );
 };
 
-export default PriceForm;
+export default CodeForm;

@@ -29,6 +29,14 @@ const formSchema = z.object({
     .max(50, {
       message: "Must be 50 characters or less",
     }),
+  code: z
+    .string()
+    .min(3, {
+      message: "Course Code is required",
+    })
+    .max(12, {
+      message: "Course code must be 6-10 characters long",
+    }),
 });
 
 const CreatePage = () => {
@@ -37,6 +45,7 @@ const CreatePage = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
+      code: "",
     },
   });
 
@@ -81,13 +90,45 @@ const CreatePage = () => {
                                          focus:border-red-blue-500
                                          focus:outline-none !important
                                          placeholder-red-400"
-                      disabled={isSubmitting}
                       placeholder="like 'Quantum Physics' , 'Game Development'"
                       {...field}
                     />
                   </FormControl>
                   <FormDescription className="text-[#643d88]">
                     What topic will you teach?
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </form>
+        </Form>
+
+        {/*------------------------------------FORM--SEPARATOR---------------------------------------------------*/}
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 mt-8">
+            <FormField
+              control={form.control}
+              name="code"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="text-[#853bce]">Course Code</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="border border-[#262046] px-3 py-2
+                                         hover:border-[#643d88] text-[#853bce]
+                                         focus:border-red-blue-500
+                                         focus:outline-none !important
+                                         placeholder-red-400"
+                      disabled={isSubmitting}
+                      placeholder="(Minimum of 3 characters) e.g. CS010"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription className="text-[#643d88]">
+                    Give your course a code.
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
