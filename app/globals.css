@@ -265,6 +265,23 @@ body {
   background-color: #d38f8f;
   /*border-radius: 0px 0px 20px 20px;*/
 }
+
+.cl-internal-4x6jej {
+  border-radius: 15px 15px 15px 15px;
+  background: #853bce;
+}
+/*---Don't have an account?---*/
+.cl-internal-kyvqj0 {
+  color: #ebe1f5;
+}
+/*----Sign up Button from signin-----*/
+.cl-internal-1v2koqu {
+  color: #2a054f;
+}
+
+/* .cl-internal-1v2koq:hover {
+  color: #8b3ed8;
+} */
 /* Hides the "Secured by Clerk" element */
 .cl-internal-180wb59 {
   display: none; /* for the initial loginpage */
