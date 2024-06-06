@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 const UnauthorizedPage = () => {
   return (
-    <div>
+    <div className="bg-[#13111c] bg-full text-white">
       {/* Navbar */}
       <MainNav />
 
       {/* Unauthorized Page Content */}
-      <div className="bg-white h-[calc(100vh-72px)] text-red-700 flex flex-col justify-center items-center">
+      <div className="bg-[#13111c] h-[calc(100vh-72px)] text-red-700 flex flex-col justify-center items-center">
         <Image
           width={50} // specify the width of the image
           height={50} // specify the height of the image
@@ -25,7 +25,7 @@ const UnauthorizedPage = () => {
           for.
         </p>
         <Link href="/landing">
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          <button className="bg-[#291839] hover:bg-[#853bce] text-white font-bold py-2 px-4 rounded">
             <SignOutButton redirectUrl="/sign-in">Sign in again</SignOutButton>
           </button>
         </Link>
