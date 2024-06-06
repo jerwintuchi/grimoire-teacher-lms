@@ -1,5 +1,5 @@
 import { db } from "@/lib/db";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 import { IconBadge } from "@/components/ui/icon-badge";
@@ -12,10 +12,13 @@ import PriceForm from "./_components/price-form";
 import AttachmentForm from "./_components/attachment-form";
 import ChaptersForm from "./_components/chapters-form";
 import CodeForm from "./_components/code-form";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
+import { useUser } from "@clerk/nextjs";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
-
+  const user = await currentUser();
   if (!userId) {
     return redirect("/");
   }
@@ -78,6 +81,14 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               </span>
             )}
           </span>
+          <div className="flex items-center gap-x-2 h-6 w-6 pt-4 text-[#b98ee4]">
+            <Badge className="text-[#b98ee4] bg-[#291839] text-lg">
+              Publisher
+            </Badge>
+            {course.userId === user?.id && (user.firstName || user.lastName)
+              ? user.firstName
+              : user?.lastName || user?.username}
+          </div>
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
