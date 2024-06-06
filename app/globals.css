@@ -115,6 +115,9 @@ body {
   border-color: #d2b4f0 ;
 }
 
+/*---AVATAR SETTINGS----*/
+
+
 
 .cl-userPreviewMainIdentifier {
   color: #ffffff;  /* Name text color */
@@ -136,9 +139,9 @@ body {
 /* the one behind the front card*/
 .cl-cardBox{
   background-color: #181622;
-  padding-bottom: 10px;
-  border-radius: 45px 45px 0px 0px;
-  border: 1px solid #FFFFFF;
+  padding-bottom: 20px;
+  border-radius: 45px 45px 45px 45px;
+  border: 2px solid #853bce;
 }
 .cl-internal-rk8nkz {
   background-color: #181622;
