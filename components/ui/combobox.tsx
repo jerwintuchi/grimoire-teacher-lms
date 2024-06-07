@@ -30,7 +30,9 @@ export const Combobox = ({ options, value, onChange }: ComboboxProps) => {
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className="bg-[#181622] hover:bg-[#291839]">
+      <PopoverTrigger
+        asChild
+        className="bg-[#181622] hover:bg-[#291839] border border-[#643d88]">
         <Button
           variant="outline"
           role="combobox"
@@ -42,12 +44,12 @@ export const Combobox = ({ options, value, onChange }: ComboboxProps) => {
           <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[200px] p-0 ">
-        <Command className="bg-[#291839]">
+      <PopoverContent className="w-[200px] p-0 border border-[#853bce]">
+        <Command className="bg-[#181622] text-[#b98ee4]">
           <CommandInput placeholder="Search Magic..." className="h-9" />
           <CommandList>
-            <CommandEmpty>No Option found.</CommandEmpty>
-            <CommandGroup className="hover:bg-[#291839] text-white hover:text-white">
+            <CommandEmpty>No Magic Category found.</CommandEmpty>
+            <CommandGroup className=" text-[#b98ee4] hover:text-[#b98ee4]">
               {options.map((option) => (
                 <CommandItem
                   key={option.value}
