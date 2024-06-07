@@ -72,7 +72,7 @@ export const ChapterActions = ({
   return (
     <div className="flex items-left gap-x-2">
       <Button
-        className="hover:bg-green-800 hover:text-white"
+        className="bg-green-600 hover:bg-green-800 hover:text-white border border-green-600 hover:border-green-800"
         onClick={onClick}
         disabled={disabled || isLoading}
         variant={"outline"}
