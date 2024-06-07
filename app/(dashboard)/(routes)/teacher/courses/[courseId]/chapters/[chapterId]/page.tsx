@@ -50,7 +50,7 @@ const chapterIdPage = async ({
         //   variant="warning"
         //   label="Chapter is not yet published. This chapter will not be visible in the course"
         // />
-        <Alert className="bg-purple-400 border border-orange-400">
+        <Alert className="bg-yellow-400 border border-orange-400">
           <div className="flex items-center">
             <CircleAlertIcon className="h-4 w-4" />
             <AlertTitle>
