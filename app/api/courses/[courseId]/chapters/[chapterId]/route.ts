@@ -120,6 +120,17 @@ export async function PATCH(
     if (!courseOwner) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
+    const chapterFetch = await db.chapter.findUnique({
+      where: {
+        id: chapterId,
+        courseId: courseId,
+      },
+    });
+
+    if (chapterFetch?.videoUrl) {
+      const videoName = chapterFetch.videoUrl.split("/").pop(); // this is the previous video to be deleted
+      if (videoName) await utapi.deleteFiles(videoName); // strictly check if videoname exists
+    }
 
     const chapter = await db.chapter.update({
       where: {
@@ -132,6 +143,8 @@ export async function PATCH(
     });
 
     if (values.videoUrl) {
+      //const videoName = values.videoUrl.split("/").pop();
+
       const existingMuxData = await db.muxData.findFirst({
         where: {
           chapterId: params.chapterId,
@@ -140,13 +153,18 @@ export async function PATCH(
 
       if (existingMuxData) {
         // cleanup function if user changes video
+        const asset = await video.assets.retrieve(existingMuxData.assetId);
         await video.assets.delete(existingMuxData.assetId);
         await db.muxData.delete({
           where: {
             id: existingMuxData.id,
           },
         });
+      } else {
+        console.log("No video name");
+        return new NextResponse("No video name", { status: 404 });
       }
+
       //if user never uploaded any video
       //then create asset
       const asset = await video.assets.create({
