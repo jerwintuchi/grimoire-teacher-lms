@@ -82,7 +82,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             )}
           </span>
           <div className="flex items-center gap-x-2 h-6 w-6 pt-4 text-[#b98ee4]">
-            <Badge className="text-[#b98ee4] bg-[#291839] text-lg">
+            <Badge className="text-[#b98ee4] bg-[#291839] text-md">
               Publisher
             </Badge>
             {course.userId === user?.id && (user.firstName || user.lastName)
