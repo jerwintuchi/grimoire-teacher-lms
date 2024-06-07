@@ -129,7 +129,7 @@ export async function PATCH(
 
     if (chapterFetch?.videoUrl) {
       const videoName = chapterFetch.videoUrl.split("/").pop(); // this is the previous video to be deleted
-      if (videoName) await utapi.deleteFiles(videoName); // strictly check if videoname exists
+      if (videoName) await utapi.deleteFiles(videoName); // strictly wait to check if videoname exists
     }
 
     const chapter = await db.chapter.update({
