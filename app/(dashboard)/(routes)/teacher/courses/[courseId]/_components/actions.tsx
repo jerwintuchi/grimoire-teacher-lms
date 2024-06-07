@@ -22,14 +22,10 @@ export const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
     try {
       setIsLoading(true);
       if (isPublished) {
-        await axios.patch(
-          `/api/courses/${courseId}/chapters/${courseId}/unpublish`
-        );
+        await axios.patch(`/api/courses/${courseId}/unpublish`);
         toast.success("Course unpublished");
       } else {
-        await axios.patch(
-          `/api/courses/${courseId}/chapters/${courseId}/publish`
-        );
+        await axios.patch(`/api/courses/${courseId}/publish`);
         toast.success("Course is now published");
       }
       router.refresh();
@@ -44,11 +40,7 @@ export const Actions = ({ disabled, courseId, isPublished }: ActionsProps) => {
     try {
       console.log("onDelete clicked");
       setIsLoading(true);
-      console.log(`Attempting to delete /api/courses/${courseId}`);
-      const response = await axios.delete(
-        `/api/courses/${courseId}/course/${courseId}`
-      );
-      console.log("Delete response:", response);
+      await axios.delete(`/api/courses/${courseId}`);
       toast.success("Course removed");
       router.refresh();
       router.push(`/teacher/courses`);

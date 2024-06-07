@@ -2,6 +2,9 @@ import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 import Mux from "@mux/mux-node";
+import { UTApi } from "uploadthing/server";
+
+const utapi = new UTApi();
 
 const { video } = new Mux({
   tokenId: process.env["MUX_TOKEN_ID"],
@@ -39,6 +42,7 @@ export async function DELETE(
     }
 
     if (chapter.videoUrl) {
+      const videoName = chapter.videoUrl.split("/").pop();
       const existingMuxData = await db.muxData.findFirst({
         where: {
           chapterId: params.chapterId,
@@ -52,6 +56,12 @@ export async function DELETE(
             id: existingMuxData.id,
           },
         });
+      }
+      if (videoName) {
+        utapi.deleteFiles(videoName);
+      } else {
+        console.log("No video name");
+        return new NextResponse("No video name", { status: 404 });
       }
     }
 
