@@ -17,7 +17,7 @@ export async function PATCH(
     const courseOwner = await db.course.findUnique({
       where: {
         id: params.courseId,
-        userId, //can be userId : userId which is the same lang
+        userId: userId, //can be userId : userId which is the same lang
       },
     });
 
@@ -60,7 +60,7 @@ export async function PATCH(
 
     return NextResponse.json(publishedChapter);
   } catch (error) {
-    console.log("[PUBLISH_PUBLISH]", error);
+    console.log("[CHAPTER_PUBLISH]", error);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
