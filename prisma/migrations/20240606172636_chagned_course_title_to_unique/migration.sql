@@ -15,6 +15,7 @@ CREATE TABLE "Course" (
     "id" TEXT NOT NULL,
     "userId" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "code" TEXT NOT NULL,
     "description" TEXT,
     "imageUrl" TEXT,
     "price" DOUBLE PRECISION,

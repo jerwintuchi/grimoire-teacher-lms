@@ -106,11 +106,9 @@ export async function PATCH(
     const { userId } = auth();
     const { courseId, chapterId } = params;
     const { isPublished, ...values } = await req.json();
-
     if (!userId) {
       return new NextResponse("Unauthorized", { status: 401 });
     }
-
     const courseOwner = await db.course.findUnique({
       where: {
         id: courseId,
@@ -127,11 +125,6 @@ export async function PATCH(
       },
     });
 
-    if (chapterFetch?.videoUrl) {
-      const videoName = chapterFetch.videoUrl.split("/").pop(); // this is the previous video to be deleted
-      if (videoName) await utapi.deleteFiles(videoName); // strictly wait to check if videoname exists
-    }
-
     const chapter = await db.chapter.update({
       where: {
         id: params.chapterId,
@@ -141,38 +134,30 @@ export async function PATCH(
         ...values,
       },
     });
-
     if (values.videoUrl) {
-      //const videoName = values.videoUrl.split("/").pop();
-
+      if (chapterFetch?.videoUrl) {
+        const videoName = chapterFetch.videoUrl.split("/").pop(); // this is the previous video to be deleted
+        if (videoName) await utapi.deleteFiles(videoName); // strictly wait to check if videoname exists
+      }
       const existingMuxData = await db.muxData.findFirst({
         where: {
           chapterId: params.chapterId,
         },
       });
-
       if (existingMuxData) {
         // cleanup function if user changes video
-        const asset = await video.assets.retrieve(existingMuxData.assetId);
         await video.assets.delete(existingMuxData.assetId);
         await db.muxData.delete({
           where: {
             id: existingMuxData.id,
           },
         });
-      } else {
-        console.log("No video name");
-        return new NextResponse("No video name", { status: 404 });
-      }
-
-      //if user never uploaded any video
-      //then create asset
+      } // if user never uploaded any video //then create asset
       const asset = await video.assets.create({
         input: values.videoUrl,
         playback_policy: ["public"],
         test: false,
       });
-
       await db.muxData.create({
         data: {
           assetId: asset.id,
@@ -181,7 +166,6 @@ export async function PATCH(
         },
       });
     }
-
     return NextResponse.json(chapter);
   } catch (error) {
     console.log("[COURSES_CHAPTER_ID", error);
