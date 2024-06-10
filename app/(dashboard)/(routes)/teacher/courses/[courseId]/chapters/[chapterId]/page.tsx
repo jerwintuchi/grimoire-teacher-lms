@@ -10,8 +10,8 @@ import ChapterDescriptionForm from "./_components/chapter-description-form";
 import ChapterVisibility from "./_components/chapter-visibility-component";
 import ChapterVideoForm from "./_components/chapter-video-form";
 
-import { ChapterActions } from "./_components/chapter-actions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Actions } from "../../_components/actions";
 
 const chapterIdPage = async ({
   params,
@@ -93,10 +93,9 @@ const chapterIdPage = async ({
               />
             </div>
             <div className="flex justify-end pt-2">
-              <ChapterActions
+              <Actions
                 disabled={!isCompleted}
                 courseId={params.courseId}
-                chapterId={params.chapterId}
                 isPublished={chapter.isPublished}
               />
             </div>
