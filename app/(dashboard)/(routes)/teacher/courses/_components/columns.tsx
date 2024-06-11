@@ -68,9 +68,13 @@ export const columns: ColumnDef<Course>[] = [
     },
     cell: ({ row }) => {
       const price = parseFloat(row.getValue("price") || "0");
+      const formattedPrice = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(price);
       return (
         <span className={cn("text-[#b98ee4] font-bold")}>
-          {!price ? "Free" : `$${price}`}
+          {!price ? "Free" : `${formattedPrice}`}
         </span>
       );
     },
