@@ -35,9 +35,6 @@ export const DropdownMenuRadioGroupDemo: React.FC<
           <DropdownMenuRadioItem value="title">Title</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="code">Code</DropdownMenuRadioItem>
           <DropdownMenuRadioItem value="price">Price</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="published">
-            Published
-          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>
