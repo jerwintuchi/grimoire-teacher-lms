@@ -12,6 +12,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import Link from "next/link";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 export const columns: ColumnDef<Course>[] = [
   {
@@ -64,6 +66,14 @@ export const columns: ColumnDef<Course>[] = [
         </Button>
       );
     },
+    cell: ({ row }) => {
+      const price = row.getValue("price") || 0;
+      return (
+        <span className={cn("text-[#b98ee4] font-bold")}>
+          {!price ? "Free" : `$${price}`}
+        </span>
+      );
+    },
   },
   {
     accessorKey: "isPublished", //isPublished
@@ -79,6 +89,19 @@ export const columns: ColumnDef<Course>[] = [
             <SortDesc className="ml-2 h-4 w-4" />
           )}
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      const isPublished = row.getValue("isPublished") || false;
+
+      return (
+        <Badge
+          className={cn(
+            "bg-gray-200 text-gray-700",
+            isPublished && "bg-[#853bce] text-white"
+          )}>
+          {isPublished ? "Published" : "Draft"}
+        </Badge>
       );
     },
   },
