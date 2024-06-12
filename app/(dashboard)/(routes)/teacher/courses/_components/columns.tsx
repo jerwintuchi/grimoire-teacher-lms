@@ -71,7 +71,9 @@ export const columns: ColumnDef<Course>[] = [
 
       return (
         <span className={cn("text-[#b98ee4] font-bold")}>
-          {!tier ? "Free" : `${tier}`}
+          <Badge className="text-[#b98ee4] bg-[#291839] text-sm border-2 border-[#a65eee] hover:bg-[#573e70]">
+            {!tier ? "Free" : `${tier}`}
+          </Badge>
         </span>
       );
     },
