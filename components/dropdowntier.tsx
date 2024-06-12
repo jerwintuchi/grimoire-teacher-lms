@@ -13,28 +13,31 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-interface DropdownMenuRadioGroupDemoProps {
+interface DropdownMenuRadioTierProps {
   option: string;
   setOption: (position: string) => void;
 }
 
-export const DropdownMenuRadioGroupDemo: React.FC<
-  DropdownMenuRadioGroupDemoProps
-> = ({ option, setOption }) => {
+export const DropdownMenuRadioTier: React.FC<DropdownMenuRadioTierProps> = ({
+  option,
+  setOption,
+}) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button className="bg-[#853bce] hover:bg-[#4c2d69]">
-          Choose what to search
-        </Button>
+        <Button className="bg-[#853bce] hover:bg-[#4c2d69]">Choose Tier</Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56 bg-[#853bce] border border-[#4c2d69] text-white">
-        <DropdownMenuLabel>Select to Search</DropdownMenuLabel>
+        <DropdownMenuLabel>Select Tier</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuRadioGroup value={option} onValueChange={setOption}>
-          <DropdownMenuRadioItem value="title">Title</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="code">Code</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="tier">Tier</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Free">Free</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Academic">
+            Academic
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="Magister">
+            Magister
+          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

@@ -57,7 +57,7 @@ export const columns: ColumnDef<Course>[] = [
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}>
-          Price
+          Tier
           {column.getIsSorted() === "asc" ? (
             <SortAscIcon className="ml-2 h-4 w-4" />
           ) : (
@@ -67,14 +67,11 @@ export const columns: ColumnDef<Course>[] = [
       );
     },
     cell: ({ row }) => {
-      const price = parseFloat(row.getValue("price") || "0");
-      const formattedPrice = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price);
+      const tier = parseFloat(row.getValue("tier") || "0");
+
       return (
         <span className={cn("text-[#b98ee4] font-bold")}>
-          {!price ? "Free" : `${formattedPrice}`}
+          {!tier ? "Free" : `${tier}`}
         </span>
       );
     },

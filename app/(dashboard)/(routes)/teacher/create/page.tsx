@@ -18,6 +18,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { cn } from "@/lib/utils";
+import { DropdownMenu } from "@/components/ui/dropdown-menu";
+import { DropdownMenuRadioTier } from "@/components/dropdowntier";
+import React from "react";
+import { Badge } from "@/components/ui/badge";
 
 // require the user to atleast 1 string input and limit the title to 50 characters max
 const formSchema = z.object({
@@ -37,6 +42,9 @@ const formSchema = z.object({
     .max(12, {
       message: "Course code must be 6-10 characters long",
     }),
+  tier: z.string().min(1, {
+    message: "Tier is required",
+  }),
 });
 
 const CreatePage = () => {
@@ -46,6 +54,7 @@ const CreatePage = () => {
     defaultValues: {
       title: "",
       code: "",
+      tier: "Free",
     },
   });
 
@@ -54,13 +63,20 @@ const CreatePage = () => {
   // send a request to api
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const response = await axios.post("/api/courses", values);
+      const data = {
+        ...values, // form values from title and code
+        tierId: selectedTier, // tier dropdown value
+      };
+      const response = await axios.post("/api/courses", data);
       router.push(`/teacher/courses/${response.data.id}`);
       toast.success("Course successfully created");
     } catch {
       toast.error("Something went wrong");
     }
   };
+
+  //hook for tier dropdown menu
+  const [selectedTier, setSelectedTier] = React.useState<string>("Free");
 
   return (
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
@@ -134,7 +150,21 @@ const CreatePage = () => {
                 </FormItem>
               )}
             />
-            <div className="flex items-cetner gap-x-2">
+
+            {/*------------------------------------TIER--SEPARATOR---------------------------------------------------*/}
+            <div className="flex items-center gap-x-2">
+              <DropdownMenuRadioTier
+                option={selectedTier}
+                setOption={setSelectedTier}
+              />
+              <div className="flex items-center gap-x-2">
+                <Badge className="text-[#b98ee4] bg-[#291839] text-xl hover:bg-[#573e70]">
+                  {selectedTier}
+                </Badge>
+              </div>
+            </div>
+            {/*------------------------------------TIER--SEPARATOR---------------------------------------------------*/}
+            <div className="flex items-center gap-x-2">
               <Link href={"/teacher/courses"}>
                 <Button
                   type="button"
@@ -145,8 +175,12 @@ const CreatePage = () => {
               <Button
                 type="submit"
                 disabled={!isValid || isSubmitting}
-                className="text-black bg-[#643d88] hover:bg-green-700 hover:text-white size-auto">
-                Continue
+                className={cn(
+                  "text-gray-300 bg-green-900  size-auto",
+                  isValid &&
+                    "bg-green-700 hover:bg-green-500 text-white size-auto"
+                )}>
+                {isValid ? "Continue" : "Complete the required fields"}
               </Button>
             </div>
           </form>

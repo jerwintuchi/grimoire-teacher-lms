@@ -23,8 +23,9 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, BookPlus, PlusCircle } from "lucide-react";
 import { DropdownMenuRadioGroupDemo } from "@/components/dropdown";
+import Link from "next/link";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -62,7 +63,7 @@ export function DataTable<TData, TValue>({
         option={selectedColumn}
         setOption={setSelectedColumn}
       />
-      <div className="flex items-center py-4">
+      <div className="flex items-center py-4 justify-between">
         <Input
           placeholder={`Search for ${selectedColumn}`}
           value={
@@ -73,12 +74,20 @@ export function DataTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+        <Link href={"/teacher/create"}>
+          <Button className="bg-[#853bce] hover:bg-[#4c2d69]">
+            <BookPlus className="-4 w-4 mr-2" />
+            Create Course
+          </Button>
+        </Link>
       </div>
       <div className="rounded-md border border-[#853bce] text-[#b98ee4]">
         <Table>
           <TableHeader className="hover:bg-[#13111c]">
             {table.getHeaderGroups().map((headerGroup) => (
-              <TableRow key={headerGroup.id}>
+              <TableRow
+                className="border-[#853bce] bg-[#853bce] text-[#b98ee4]"
+                key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
                   <TableHead className="text-[#fefcff]" key={header.id}>
                     {header.isPlaceholder
@@ -96,7 +105,7 @@ export function DataTable<TData, TValue>({
             {table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
-                  className="hover:text-[#ffffff] hover:bg-[#853bce]"
+                  className="hover:text-[#ffffff] hover:bg-[#853bce] border-[#853bce]"
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}>
                   {row.getVisibleCells().map((cell) => (
