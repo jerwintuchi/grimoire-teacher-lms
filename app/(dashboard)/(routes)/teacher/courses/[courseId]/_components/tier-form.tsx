@@ -60,6 +60,10 @@ export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium justify-end">
+        <Badge className="text-[#b98ee4] bg-[#291839] text-xl border-2 border-[#a65eee] hover:bg-[#573e70]">
+          {selectedOption?.value || initialData.tierId || "Free"}
+          {" Tier"} {/** concatenates the word "Tier" */}
+        </Badge>
         <Button
           onClick={toggleEdit}
           variant="outline"
@@ -72,10 +76,6 @@ export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
             </>
           )}
         </Button>
-        <Badge className="text-[#b98ee4] bg-[#291839] text-xl border-2 border-[#a65eee] hover:bg-[#573e70]">
-          {selectedOption?.value || initialData.tierId || "Free"}
-          {" Tier"} {/** concatenates the word "Tier" */}
-        </Badge>
       </div>
       {isEditing && (
         <Form {...form}>
