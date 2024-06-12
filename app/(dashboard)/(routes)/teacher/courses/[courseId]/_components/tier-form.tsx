@@ -15,8 +15,6 @@ import { Pen } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
 import { Course } from "@prisma/client";
 import { DropdownMenuRadioTier } from "@/components/dropdowntier";
 import { Badge } from "@/components/ui/badge";
@@ -25,14 +23,14 @@ import React from "react";
 interface TierFormProps {
   initialData: Course;
   courseId: string;
-  options: { value?: string }[];
+  options: { value: string }[];
 }
 
 const formSchema = z.object({
   tierId: z.string().min(1),
 });
 
-export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
+export const TierForm = ({ initialData, courseId }: TierFormProps) => {
   const [isEditing, setIsediting] = useState(false);
 
   const toggleEdit = () => setIsediting((current) => !current);
@@ -47,17 +45,16 @@ export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
   const { isSubmitting, isValid } = form.formState;
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      await axios.patch(`/api/courses/${courseId}`, values);
-      toast.success("Course Category updated");
+      await axios.patch(`/api/courses/${courseId}`, { tierId: selectedTier });
+      console.log("submitted values", values);
+      toast.success("Course Tier changed");
       toggleEdit();
       router.refresh();
     } catch {
       toast.error("Something went wrong");
     }
   };
-  const selectedOption = options.find(
-    (option) => option.value === initialData.tierId
-  );
+
   //hook for tier dropdown menu
   const [selectedTier, setSelectedTier] = React.useState<string>(
     initialData.tierId || "Free"
@@ -104,6 +101,7 @@ export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
                         <DropdownMenuRadioTier
                           option={selectedTier}
                           setOption={setSelectedTier}
+                          {...field}
                         />
                       </div>
                     </FormControl>

@@ -57,22 +57,6 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
     return redirect("/");
   }
 
-  const updateCourseTier = async (newTierId: string) => {
-    const response = await db.course.update({
-      where: {
-        id: course.id,
-      },
-      data: {
-        tierId: newTierId,
-      },
-    });
-    course.tierId = newTierId;
-  };
-
-  const handleTierChange = async (newTierId: string) => {
-    await updateCourseTier(newTierId);
-  };
-
   const requiredFields = [
     course.title,
     course.code,
