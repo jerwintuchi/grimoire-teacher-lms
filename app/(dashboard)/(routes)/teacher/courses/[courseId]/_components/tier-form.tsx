@@ -20,6 +20,7 @@ import { Label } from "@/components/ui/label";
 import { Course } from "@prisma/client";
 import { DropdownMenuRadioTier } from "@/components/dropdowntier";
 import { Badge } from "@/components/ui/badge";
+import React from "react";
 
 interface TierFormProps {
   initialData: Course;
@@ -57,15 +58,25 @@ export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
   const selectedOption = options.find(
     (option) => option.value === initialData.tierId
   );
+  //hook for tier dropdown menu
+  const [selectedTier, setSelectedTier] = React.useState<string>(
+    initialData.tierId || "Free"
+  );
+
+  // Reset selectedTier to initialData.tierId on cancel
+  const handleCancel = () => {
+    setSelectedTier(initialData.tierId || "Free");
+    toggleEdit();
+  };
   return (
     <div className="mt-6 rounded-md p-4">
       <div className="drop-shadow-lg text-white font-medium justify-end">
         <Badge className="text-[#b98ee4] bg-[#291839] text-xl border-2 border-[#a65eee] hover:bg-[#573e70]">
-          {selectedOption?.value || initialData.tierId || "Free"}
+          {selectedTier}
           {" Tier"} {/** concatenates the word "Tier" */}
         </Badge>
         <Button
-          onClick={toggleEdit}
+          onClick={handleCancel}
           variant="outline"
           className="bg-[#13111c] border border-[#13111c] hover:text-[#853bce] hover:bg-[#13111c] rounded-full">
           {isEditing ? (
@@ -91,10 +102,8 @@ export const TierForm = ({ initialData, courseId, options }: TierFormProps) => {
                     <FormControl>
                       <div className="pt-2">
                         <DropdownMenuRadioTier
-                          option={initialData.tierId ?? "Free"}
-                          setOption={function (position: string): void {
-                            throw new Error("Function not implemented.");
-                          }}
+                          option={selectedTier}
+                          setOption={setSelectedTier}
                         />
                       </div>
                     </FormControl>
