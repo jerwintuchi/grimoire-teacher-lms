@@ -51,7 +51,7 @@ export const columns: ColumnDef<Course>[] = [
     },
   },
   {
-    accessorKey: "price",
+    accessorKey: "tierId",
     header: ({ column }) => {
       return (
         <Button
@@ -67,7 +67,7 @@ export const columns: ColumnDef<Course>[] = [
       );
     },
     cell: ({ row }) => {
-      const tier = parseFloat(row.getValue("tier") || "0");
+      const tier = row.getValue("tierId");
 
       return (
         <span className={cn("text-[#b98ee4] font-bold")}>

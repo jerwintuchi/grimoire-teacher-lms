@@ -142,9 +142,9 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                 value: tier.id,
               }))}
             />
-            <Badge className="text-[#b98ee4] bg-[#291839] text-xl hover:bg-[#573e70]">
+            {/* <Badge className="text-[#b98ee4] bg-[#291839] text-xl hover:bg-[#573e70]">
               {course.tierId + " Tier"}
-            </Badge>
+            </Badge> */}
           </div>
         </div>
 
