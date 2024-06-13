@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Button } from "@/components/ui/button";
 import { Pen } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { Course } from "@prisma/client";
@@ -59,6 +59,12 @@ export const TierForm = ({ initialData, courseId }: TierFormProps) => {
   const [selectedTier, setSelectedTier] = React.useState<string>(
     initialData.tierId || "Free"
   );
+  //for checking if tier is changed so as to prevent the user from saving if the tier is not changed
+  const [isTierChanged, setIsTierChanged] = useState(false);
+
+  useEffect(() => {
+    setIsTierChanged(selectedTier !== initialData?.tierId);
+  }, [selectedTier, initialData]); // Update on changes to selectedTier and initialData
 
   // Reset selectedTier to initialData.tierId on cancel
   const handleCancel = () => {
@@ -112,7 +118,7 @@ export const TierForm = ({ initialData, courseId }: TierFormProps) => {
               <div className="flex items-center gap-x-2">
                 <Button
                   className="w-full bg-green-600 text-white hover:bg-green-500"
-                  disabled={isSubmitting || !isValid}
+                  disabled={isSubmitting || !isValid || !isTierChanged}
                   type="submit">
                   Save
                 </Button>
