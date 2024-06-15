@@ -14,6 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { CircleAlertIcon } from "lucide-react";
 import { Actions } from "./_components/actions";
+import { DropdownMenuRadioTier } from "@/components/dropdowntier";
+import TierForm from "./_components/tier-form";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -45,6 +47,11 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       name: "asc",
     },
   });
+  const tiers = await db.tier.findMany({
+    orderBy: {
+      name: "asc",
+    },
+  });
 
   if (!course) {
     return redirect("/");
@@ -53,9 +60,9 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const requiredFields = [
     course.title,
     course.code,
+    course.tierId,
     course.description,
     course.imageUrl,
-    course.price,
     course.categoryId,
     course.chapters.some((chapter) => chapter.isPublished),
   ];
@@ -75,7 +82,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               <Alert className="bg-yellow-400 border border-orange-400">
                 <CircleAlertIcon className="h-4 w-4" />
                 <AlertTitle>
-                  <AlertDescription className="h-4 pl-2">
+                  <AlertDescription className="flex h-4 pl-2 ">
                     Chapter is not yet published. This chapter will not be
                     visible in the course
                   </AlertDescription>
@@ -109,6 +116,23 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             disabled={!isCompleted}
           />
         </div>
+        {/*-----------------------------------------------COURSE-TIER-----------------------------------------------*/}
+        <div className="flex pt-6 gap-x-2">
+          <div className="">
+            <TierForm
+              initialData={course}
+              courseId={course.id}
+              options={tiers.map((tier) => ({
+                value: tier.id,
+              }))}
+            />
+            {/* <Badge className="text-[#b98ee4] bg-[#291839] text-xl hover:bg-[#573e70]">
+              {course.tierId + " Tier"}
+            </Badge> */}
+          </div>
+        </div>
+
+        {/*-----------------------------------------------COURSE-TIER-----------------------------------------------*/}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-16">
           <div>

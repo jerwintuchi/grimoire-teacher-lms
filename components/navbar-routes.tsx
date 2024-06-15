@@ -7,6 +7,7 @@ import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { isTeacher } from "@/lib/teacher";
 import { GreetUser } from "./greetings/greetuser";
+import { SearchInput } from "./search-input";
 
 const NavbarRoutes = () => {
   const { userId } = useAuth();
@@ -14,41 +15,49 @@ const NavbarRoutes = () => {
 
   const isTeacherPage = pathname?.startsWith("/teacher");
   const isPlayerPage = pathname?.includes("/chapter");
+  const isSearchPage = pathname === "/search";
   const validTeacher = isTeacher(userId);
   return (
-    <div className="flex gap-x-2 ml-auto">
-      {isTeacherPage || isPlayerPage ? (
-        <div>
-          <GreetUser />
-          <Link href="/">
-            <Button
-              size="sm"
-              className="text-[#b98ee4] bg-[#291839]
-                    hover:bg-[#853bce] hover:text-white border-red-900 size-auto">
-              <LogOut className="h-4 w-4 mr-2" />
-              Back to Student Mode
-            </Button>
-          </Link>
-        </div> //isTeacher is from .env and teacherUser is from sessionClaims
-      ) : (
-        (
+    <>
+      {isSearchPage && (
+        <div className="hidden md:block text-[#b98ee4]">
+          <SearchInput />
+        </div>
+      )}
+      <div className="flex gap-x-2 ml-auto">
+        {isTeacherPage || isPlayerPage ? (
           <div>
             <GreetUser />
-            <Link href="/teacher/courses">
+            <Link href="/">
               <Button
                 size="sm"
-                variant="ghost"
                 className="text-[#b98ee4] bg-[#291839]
                     hover:bg-[#853bce] hover:text-white border-red-900 size-auto">
-                Teacher Mode
+                <LogOut className="h-4 w-4 mr-2" />
+                Back to Student Mode
               </Button>
             </Link>
-          </div>
-        ) || null
-      )}
+          </div> //isTeacher is from .env and teacherUser is from sessionClaims
+        ) : (
+          (
+            <div>
+              <GreetUser />
+              <Link href="/teacher/courses">
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="text-[#b98ee4] bg-[#291839]
+                    hover:bg-[#853bce] hover:text-white border-red-900 size-auto">
+                  Teacher Mode
+                </Button>
+              </Link>
+            </div>
+          ) || null
+        )}
 
-      <UserButton afterSignOutUrl="/sign-in" />
-    </div>
+        <UserButton afterSignOutUrl="/sign-in" />
+      </div>
+    </>
   );
 };
 

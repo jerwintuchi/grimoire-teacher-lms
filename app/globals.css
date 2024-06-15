@@ -26,6 +26,14 @@ body {
   word-break: break-all;  /* Break on character boundaries if needed */
 }
 
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+ 
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
 
   @layer base {
     :root {
