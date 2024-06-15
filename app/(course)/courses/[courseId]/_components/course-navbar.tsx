@@ -13,9 +13,8 @@ interface CourseNavbarProps {
 const CourseNavbar = ({ course, progressCount }: CourseNavbarProps) => {
   return (
     <>
-      {" "}
       {/* removed the h-full */}
-      <div className="p-4  flex items-center bg-[#13111c] shadow-sm">
+      <div className="p-4 h-full flex items-center bg-[#13111c] shadow-sm">
         <NavbarRoutes />
       </div>
     </>

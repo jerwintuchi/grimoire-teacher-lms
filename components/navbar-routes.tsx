@@ -14,7 +14,7 @@ const NavbarRoutes = () => {
   const pathname = usePathname();
 
   const isTeacherPage = pathname?.startsWith("/teacher");
-  const isPlayerPage = pathname?.includes("/chapter");
+  const isCoursePage = pathname?.includes("/courses");
   const isSearchPage = pathname === "/search";
   const validTeacher = isTeacher(userId);
   return (
@@ -25,7 +25,7 @@ const NavbarRoutes = () => {
         </div>
       )}
       <div className="flex gap-x-2 ml-auto">
-        {isTeacherPage || isPlayerPage ? (
+        {isTeacherPage || isCoursePage ? (
           <div>
             <GreetUser />
             <Link href="/">
@@ -34,7 +34,7 @@ const NavbarRoutes = () => {
                 className="text-[#b98ee4] bg-[#291839]
                     hover:bg-[#853bce] hover:text-white border-red-900 size-auto">
                 <LogOut className="h-4 w-4 mr-2" />
-                Back to Student Mode
+                Exit
               </Button>
             </Link>
           </div> //isTeacher is from .env and teacherUser is from sessionClaims
