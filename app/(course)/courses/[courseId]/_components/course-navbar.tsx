@@ -1,5 +1,6 @@
 import NavbarRoutes from "@/components/navbar-routes";
 import { Chapter, Course, UserProgress } from "@prisma/client";
+import CourseMobileSidebar from "./course-mobile-sidebar";
 
 interface CourseNavbarProps {
   course: Course & {
@@ -13,8 +14,8 @@ interface CourseNavbarProps {
 const CourseNavbar = ({ course, progressCount }: CourseNavbarProps) => {
   return (
     <>
-      {/* removed the h-full */}
       <div className="p-4 h-full flex items-center bg-[#13111c] shadow-sm">
+        <CourseMobileSidebar course={course} progressCount={progressCount} />
         <NavbarRoutes />
       </div>
     </>
