@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import { CheckCircle, Lock, PlayCircle } from "lucide-react";
+import { BookOpenCheck, BookOpenText, Lock } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 
 interface CourseSidebarItemProps {
@@ -21,7 +21,7 @@ const CourseSidebarItem = ({
   const pathname = usePathname();
   const router = useRouter();
 
-  const Icon = isLocked ? Lock : isCompleted ? CheckCircle : PlayCircle;
+  const Icon = isLocked ? Lock : isCompleted ? BookOpenCheck : BookOpenText;
 
   const isActive = pathname?.includes(id);
 
@@ -40,7 +40,7 @@ const CourseSidebarItem = ({
           "bg-[#853bce] text-[#e5d9f0] font-medium hover:bg-[#b98ee4]",
         isCompleted && isActive && "bg-[#4c0494] text-[#e5d9f0]"
       )}>
-      <div className="flex items-center gap-x-2 py-4">
+      <div className="flex items-center gap-x-2 py-2">
         <Icon
           size={22}
           className={cn(
