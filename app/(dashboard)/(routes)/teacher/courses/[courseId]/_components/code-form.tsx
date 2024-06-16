@@ -27,11 +27,11 @@ interface CodeFormProps {
 const formSchema = z.object({
   code: z
     .string()
-    .min(1, {
+    .min(3, {
       message: "Course Code is required",
     })
-    .max(6 - 10, {
-      message: "Course code must be 6-10 characters long",
+    .max(10, {
+      message: "Course code must be 10 characters long",
     }),
 });
 
