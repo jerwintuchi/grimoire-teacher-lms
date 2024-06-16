@@ -5,6 +5,9 @@ import getChapter from "@/actions/get-chapter";
 import Banner from "@/components/banner";
 import VideoPlayer from "./_components/video-player";
 import CourseEnrollButton from "./_components/course-enroll-button";
+import { formatPrice } from "@/lib/format";
+import { Separator } from "@/components/ui/separator";
+import { Preview } from "@/components/preview";
 const ChapterIdPage = async ({
   params,
 }: {
@@ -50,7 +53,7 @@ const ChapterIdPage = async ({
           variant="warning"
         />
       )}
-      <div className="felx flex-col max-w-4xl mx-auto pb-20">
+      <div className="flex flex-col max-w-4xl mx-auto pb-20">
         <div className="p-4">
           <VideoPlayer
             chapterId={params.chapterId}
@@ -62,18 +65,24 @@ const ChapterIdPage = async ({
             completeOnEnd={completeOnEnd}
           />
         </div>
-        <div className="p-4 flex flex-col md:flex-row items-center">
-          <h2 className="text-2xl font-semibold mb-2 text-[#b98ee4]">
-            {chapter.title}
-          </h2>
-          {purchase ? (
-            <div>{/* TODO Add CourseProgressButton */}</div>
-          ) : (
-            <CourseEnrollButton
-              courseId={params.courseId}
-              tier={course?.tier?.id!}
-            />
-          )}
+        <div>
+          <div className="p-4 flex flex-col md:flex-row items-center">
+            <h2 className="text-2xl font-semibold mb-2 text-[#b98ee4] mr-36 md:pb-8">
+              {chapter.title}
+            </h2>
+            {purchase ? (
+              <div>{/* TODO Add CourseProgressButton */}</div>
+            ) : (
+              <CourseEnrollButton
+                courseId={params.courseId}
+                tier={formatPrice(course?.tier?.price!)}
+              />
+            )}
+          </div>
+          <Separator />
+          <div>
+            <Preview value={chapter.description!} />
+          </div>
         </div>
       </div>
     </div>

@@ -14,7 +14,5 @@ export const Preview = ({ value }: PreviewProps) => {
     []
   );
 
-  const sanitizedContent = DOMPurify.sanitize(value);
-
-  return <ReactQuill theme="bubble" value={sanitizedContent} readOnly />;
+  return <ReactQuill theme="bubble" value={value} readOnly />;
 };

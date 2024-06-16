@@ -19,8 +19,7 @@ export const Editor = ({ onChange, value }: EditorProps) => {
     const sanitizedContent = DOMPurify.sanitize(content);
 
     onChange(sanitizedContent);
-
-  }
+  };
   return (
     <div className="bg-[#181622] hover:bg-[#291839]">
       <ReactQuill theme="snow" value={value} onChange={handleChange} />
