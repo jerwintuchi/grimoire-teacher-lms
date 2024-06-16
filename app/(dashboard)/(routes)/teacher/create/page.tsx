@@ -142,6 +142,7 @@ const CreatePage = () => {
                       placeholder="(Minimum of 3 characters) e.g. CS010"
                       {...field}
                     />
+                    {/*HIDDEN INPUT TO INCLUDE THE tierId sa form when submitting */}
                   </FormControl>
                   <FormDescription className="text-[#643d88]">
                     Give your course a code.

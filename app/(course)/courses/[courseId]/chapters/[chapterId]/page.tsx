@@ -31,6 +31,9 @@ const ChapterIdPage = async ({
   if (!chapter || !course) {
     return redirect("/");
   }
+  if (course) {
+    const tierId = course?.tier?.id;
+  }
 
   const isLocked = !chapter.isFree && !purchase;
   const completeOnEnd = !!purchase && !userProgress?.isCompleted;
@@ -68,7 +71,7 @@ const ChapterIdPage = async ({
           ) : (
             <CourseEnrollButton
               courseId={params.courseId}
-              tier={course?.tier?.id || "Free"}
+              tier={course?.tier?.id!}
             />
           )}
         </div>

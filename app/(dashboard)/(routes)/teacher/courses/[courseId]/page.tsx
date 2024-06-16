@@ -79,15 +79,17 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
             {!course.isPublished && (
-              <Alert className="bg-yellow-400 border border-orange-400">
-                <CircleAlertIcon className="h-4 w-4" />
-                <AlertTitle>
-                  <AlertDescription className="flex h-4 pl-2 ">
-                    Chapter is not yet published. This chapter will not be
-                    visible in the course
-                  </AlertDescription>
-                </AlertTitle>
-              </Alert>
+              <>
+                <Alert className="bg-yellow-400 border border-orange-400">
+                  <CircleAlertIcon className="h-4 w-4" />
+                  <AlertTitle>
+                    <AlertDescription className="flex h-4 pl-2 overflow-wrap: break-word">
+                      Chapter is not yet published. This chapter will not be
+                      visible in the course
+                    </AlertDescription>
+                  </AlertTitle>
+                </Alert>
+              </>
             )}
             <h1 className="text-2xl font-medium text-white">Course Creation</h1>
             <span className="text-sm text-red-500">

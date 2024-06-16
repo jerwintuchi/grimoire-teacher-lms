@@ -29,9 +29,9 @@ async function seedTiers() {
   const prisma = new PrismaClient(); // Create new instance for tiers
 
   const tiers = [
-    { id: "free", name: "Free", price: 0 },
-    { id: "academic", name: "Academic", price: 10 },
-    { id: "magister", name: "Magister", price: 20 },
+    { id: "Free", name: "free", price: 0 },
+    { id: "Academic", name: "academic", price: 10 },
+    { id: "Magister", name: "magister", price: 20 },
   ];
 
   try {

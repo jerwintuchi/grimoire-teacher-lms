@@ -7,7 +7,11 @@ interface CourseEnrollButtonProps {
   courseId: string;
 }
 const CourseEnrollButton = ({ tier, courseId }: CourseEnrollButtonProps) => {
-  return <Button>Enroll for {tier}</Button>;
+  return (
+    <Button size="sm" className="w-full md:w-auto">
+      Enroll for {tier}
+    </Button>
+  );
 };
 
 export default CourseEnrollButton;

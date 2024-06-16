@@ -15,6 +15,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           position: "asc",
         },
       },
+      tier: true,
     },
   });
   if (!course) {
