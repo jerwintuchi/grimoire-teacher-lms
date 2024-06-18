@@ -94,6 +94,17 @@ export const CodeForm = ({ initialData, courseId }: CodeFormProps) => {
                       placeholder="e.g. 'CSC101' or 'CSC102'..."
                       {...field}
                       className="border border-[#262046] px-3 py-2 text-[#853bce]"
+                      onChange={(e) => {
+                        if (/\b {3,13}\b/.test(e.target.value)) {
+                          // Matches 3 or more spaces with word boundaries
+                          toast.error(
+                            "Course code cannot have more than two spaces"
+                          );
+                          console.log(
+                            "Course code cannot have more than two spaces"
+                          );
+                        }
+                      }}
                     />
                   </FormControl>
                   <FormMessage className="text-red-500 drop-shadow-sm" />
