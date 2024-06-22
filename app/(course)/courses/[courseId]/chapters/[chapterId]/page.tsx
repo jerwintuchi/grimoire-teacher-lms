@@ -68,7 +68,7 @@ const ChapterIdPage = async ({
         </div>
         <div>
           <div className="p-4 flex flex-col md:flex-row items-center">
-            <h2 className="text-2xl font-semibold mb-2 text-[#b98ee4] mr-36 md:pb-8">
+            <h2 className="text-2xl font-semibold mb-2 text-[#b98ee4] mr-4 ">
               {chapter.title}
             </h2>
             {purchase ? (
@@ -80,7 +80,7 @@ const ChapterIdPage = async ({
               />
             )}
           </div>
-          <Separator />
+          <Separator className="mb-4 bg-[#b98ee4]" />
           <div>
             <Preview value={chapter.description!} />
           </div>
