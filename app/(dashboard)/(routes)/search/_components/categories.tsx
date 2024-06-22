@@ -18,7 +18,7 @@ import { CategoryItem } from "./category-item";
 interface CategoriesProps {
   items: Category[];
 }
-/* eslint-disable no-useless-quotes */
+
 const iconMap: Record<Category["name"], IconType> = {
   "Elemental Magic": GiFireSpellCast,
   "Illusion Arts": GiGhostAlly,

@@ -6,7 +6,6 @@ import TitleForm from "./_components/title-form";
 import DescriptionForm from "./_components/description-form";
 import { ImageForm } from "./_components/image-form";
 import CategoryForm from "./_components/category-form";
-import PriceForm from "./_components/price-form";
 import AttachmentForm from "./_components/attachment-form";
 import ChaptersForm from "./_components/chapters-form";
 import CodeForm from "./_components/code-form";
@@ -157,8 +156,6 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               <div className="flex items-center gap-x-2 text-red-500"></div>
               <ChaptersForm initialData={course} courseId={course.id} />
             </div>
-            <div className="flex items-center gap-x-2 text-yellow-500"></div>
-            <PriceForm initialData={course} courseId={course.id} />
             <div>
               <div className="flex items-center gap-x-2 text-yellow-500"></div>
               <AttachmentForm initialData={course} courseId={course.id} />
