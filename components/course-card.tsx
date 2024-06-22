@@ -28,7 +28,13 @@ export const CourseCard = ({
     <Link href={`/courses/${id}`}>
       <div className="group hover:shadow-sm transition overflow-hidden border border-[#853bce] rounded-lg p-3 h-full hover:text-[#cdb6e4]">
         <div className="relative w-full aspect-video rounded-md overflow-hidden">
-          <Image fill className="object-cover" alt={title} src={imageUrl} />
+          <Image
+            unoptimized
+            fill
+            className="object-cover"
+            alt={title}
+            src={imageUrl}
+          />
           <div className="absolute top-0 right-0 p-1 hover:shadow-md">
             <Badge className="text-white bg-[#291839]">{tier}</Badge>
           </div>
