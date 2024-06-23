@@ -1,10 +1,5 @@
 import { NextResponse } from "next/server";
-import { isTeacher } from "./lib/teacher";
-import {
-  clerkMiddleware,
-  createRouteMatcher,
-  getAuth,
-} from "@clerk/nextjs/server";
+import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 
 export default clerkMiddleware(
   (auth, req) => {
@@ -15,8 +10,8 @@ export default clerkMiddleware(
       auth().protect();
 
       if (role) {
-        console.log("User is ", role);
         if (role === "student" || role === null) {
+          console.log("User is unauthorized, with role : ", role);
           return NextResponse.redirect(new URL("/unauthorized", req.url));
         }
       }
@@ -36,9 +31,7 @@ export const config = {
   publicRoutes: [
     "/api/webhook",
     "/sign-in(.*)",
-    "/teacher-sign-up(.*)",
     "/sign-up(.*)",
-    "/teacher-sign-in(.*)",
     "/landing(.*)",
     "/about",
     "/unauthorized",

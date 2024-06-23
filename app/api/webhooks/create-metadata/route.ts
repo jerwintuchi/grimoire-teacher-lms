@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { clerkClient, currentUser } from "@clerk/nextjs/server";
 
 const prisma = new PrismaClient();
-const webhookSecret = process.env.WEBHOOK_METADATA || "";
+const local_webhookSecret = process.env.WEBHOOK_METADATA || "";
 
 async function handler(request: Request) {
   const payload = await request.json();
@@ -17,7 +17,7 @@ async function handler(request: Request) {
     "svix-signature": headersList.get("svix-signature"),
   };
 
-  const wh = new Webhook(webhookSecret);
+  const wh = new Webhook(local_webhookSecret);
 
   type EventType = "user.created" | "user.updated" | "user.deleted";
 
@@ -50,7 +50,6 @@ async function handler(request: Request) {
   const teacherrole = privateMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
 
-  const user = await currentUser();
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
     await clerkClient.users.updateUserMetadata(id, {
@@ -66,7 +65,7 @@ async function handler(request: Request) {
             role: teacherrole,
           },
         },
-        role: teacherrole, // Add this line
+        role: teacherrole,
       },
     });
     return NextResponse.json(
@@ -77,13 +76,13 @@ async function handler(request: Request) {
 
   if (eventType === "user.updated") {
     const updatedUser = await clerkClient.users.getUser(evt.data.id);
-    const newRole = updatedUser.privateMetadata?.role as string; // Access user role from custom attribute
+    const newRole = updatedUser.publicMetadata?.role as string; // Access user role from custom attribute
     await prisma.user.update({
       where: { clerkId: evt.data.id },
       data: {
         role: newRole, // Update role column in Prisma based on Clerk data
         clerkAttributes: {
-          privateMetadata: {
+          publicMetadata: {
             role: newRole,
           },
         },
