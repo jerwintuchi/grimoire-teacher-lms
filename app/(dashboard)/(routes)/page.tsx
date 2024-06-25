@@ -11,14 +11,14 @@ export default async function TeacherDashBoard() {
   //   // Redirect to root for teacher or publicMetadata.role === "teacher"
   //   return redirect("/");
   // } else \
-  if (
-    //if role is student or have no role then unauthorized
-    checkRole("student") ||
-    (!checkRole("student") && !checkRole("teacher"))
-  ) {
-    //from checkRole("student") to role
-    return redirect("/unauthorized");
-  }
+  // if (
+  //   //if role is student or have no role then unauthorized
+  //   checkRole("student") ||
+  //   (!checkRole("student") && !checkRole("teacher"))
+  // ) {
+  //   //from checkRole("student") to role
+  //   return redirect("/unauthorized");
+  // }
 
   // if (!user) {
   //   return redirect("/unauthorized");
