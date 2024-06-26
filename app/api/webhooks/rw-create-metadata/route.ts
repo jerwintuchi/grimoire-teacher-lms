@@ -45,9 +45,9 @@ async function handler(request: Request) {
 
   const eventType = evt.type;
 
-  const { id, publicMetadata, privateMetadata } = evt.data;
+  const { id, publicMetadata } = evt.data;
   //const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
-  const teacherrole = privateMetadata?.role || "teacher";
+  const teacherrole = publicMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
 
   const user = await currentUser();
@@ -77,13 +77,13 @@ async function handler(request: Request) {
 
   if (eventType === "user.updated") {
     const updatedUser = await clerkClient.users.getUser(evt.data.id);
-    const newRole = updatedUser.privateMetadata?.role as string; // Access user role from custom attribute
+    const newRole = updatedUser.publicMetadata?.role as string; // Access user role from custom attribute
     await prisma.user.update({
       where: { clerkId: evt.data.id },
       data: {
         role: newRole, // Update role column in Prisma based on Clerk data
         clerkAttributes: {
-          privateMetadata: {
+          publicMetadata: {
             role: newRole,
           },
         },

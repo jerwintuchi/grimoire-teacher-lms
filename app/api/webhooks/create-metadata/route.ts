@@ -45,9 +45,9 @@ async function handler(request: Request) {
 
   const eventType = evt.type;
 
-  const { id, publicMetadata, privateMetadata } = evt.data;
+  const { id, publicMetadata } = evt.data;
   //const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
-  const teacherrole = privateMetadata?.role || "teacher";
+  const teacherrole = publicMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
 
   //LOGIC FOR FIRST TIME USER CREATION
