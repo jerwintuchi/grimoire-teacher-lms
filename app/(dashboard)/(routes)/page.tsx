@@ -5,7 +5,7 @@ import { auth, currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 
 export default async function TeacherDashBoard() {
-  const user = await currentUser();
+  //const user = await currentUser();
 
   // if (checkRole("teacher") && user) {
   //   // Redirect to root for teacher or publicMetadata.role === "teacher"
@@ -24,9 +24,5 @@ export default async function TeacherDashBoard() {
   //   return redirect("/unauthorized");
   // }
 
-  return (
-    <div>
-      <UserButton afterSignOutUrl="/sign-in" />
-    </div>
-  );
+  return <div></div>;
 }
