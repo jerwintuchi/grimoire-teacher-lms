@@ -22,7 +22,8 @@ export async function POST(req: Request) {
   const userId = session?.metadata?.userId;
   const courseId = session?.metadata?.courseId;
 
-  if (event.type.match("checkout.session")) {
+  if (event.type.match("checkout.session.completed")) {
+    //changed from checkout.session
     if (!userId || !courseId) {
       return new NextResponse(
         "Webhook Error : Missing Metadata (userI or courseId)",
@@ -39,7 +40,7 @@ export async function POST(req: Request) {
     return new NextResponse(
       `Webhook Error : Unhandled event type ${event.type}`,
       {
-        status: 400,
+        status: 200, //chagned from 400
       }
     );
   }
