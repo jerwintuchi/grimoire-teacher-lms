@@ -6,7 +6,7 @@ export default function Page() {
       <h1 className="text-3xl pb-6 text-[#b98ee4]">
         <strong>Hello Teacher!</strong>
       </h1>
-      <SignIn/>
+      <SignIn />
     </div>
   );
 }

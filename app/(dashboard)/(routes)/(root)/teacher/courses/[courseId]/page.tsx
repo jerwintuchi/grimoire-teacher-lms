@@ -11,10 +11,14 @@ import ChaptersForm from "./_components/chapters-form";
 import CodeForm from "./_components/code-form";
 import { Badge } from "@/components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { CircleAlertIcon } from "lucide-react";
+import { ArrowLeftCircle, CircleAlertIcon } from "lucide-react";
 import { Actions } from "./_components/actions";
 import { DropdownMenuRadioTier } from "@/components/dropdowntier";
 import TierForm from "./_components/tier-form";
+import QuizForm from "./_components/quiz-form";
+import { AvatarStack } from "./_components/people-avatar";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -38,6 +42,17 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           createdAt: "desc",
         },
       },
+      quizzes: {
+        include: {
+          questions: {
+            select: {
+              id: true,
+              text: true,
+              options: true,
+            },
+          },
+        },
+      },
     },
   });
 
@@ -55,6 +70,19 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   if (!course) {
     return redirect("/");
   }
+  // //get user image of enrolled students from clerk
+  // const users = await db.user.findMany({
+  //   where: {
+  //     enrolledCourses: {
+  //       some: {
+  //         id: course.id,
+  //       },
+  //     },
+  //   },
+  //   include: {
+  //     image: true,
+  //   },
+  // });
 
   const requiredFields = [
     course.title,
@@ -77,6 +105,13 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
       <div className="p-6 grow">
         <div className="flex items-center justify-between">
           <div className="flex flex-col gap-y-2">
+            <Link href="/teacher/courses" className="text-[#b98ee4]">
+              <Button className="gap-2 bg-[#291839] hover:bg-[#b98ee4]">
+                <ArrowLeftCircle className="h-6 w-6" />
+                <p>Back to courses</p>
+              </Button>
+            </Link>
+
             {!course.isPublished && (
               <>
                 <Alert className="bg-yellow-400 border border-orange-400">
@@ -118,7 +153,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
           />
         </div>
         {/*-----------------------------------------------COURSE-TIER-----------------------------------------------*/}
-        <div className="flex pt-6 gap-x-2">
+        <div className="flex flex-row justify-between pt-6 gap-x-2">
           <div className="">
             <TierForm
               initialData={course}
@@ -130,6 +165,20 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
             {/* <Badge className="text-[#b98ee4] bg-[#291839] text-xl hover:bg-[#573e70]">
               {course.tierId + " Tier"}
             </Badge> */}
+          </div>
+          <div>
+            <p className="text-[#b98ee4]">Students</p>
+            <AvatarStack
+              avatars={[
+                { name: "John Doe", image: "https://i.pravatar.cc/150" },
+                { name: "Edgar Allan Poe", image: "https://i.pravatar.cc/150" },
+                { name: "Jane Doe", image: "https://i.pravatar.cc/150" },
+                {
+                  name: "Fyodor Dostoevsky",
+                  image: "https://i.pravatar.cc/150",
+                },
+              ]}
+            />
           </div>
         </div>
 
@@ -160,6 +209,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
               <div className="flex items-center gap-x-2 text-yellow-500"></div>
               <AttachmentForm initialData={course} courseId={course.id} />
             </div>
+            <div></div>
           </div>
         </div>
       </div>
