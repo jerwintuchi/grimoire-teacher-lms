@@ -15,19 +15,6 @@ export interface SidebarItemProps {
   href: string;
 }
 
-const guestRoutes = [
-  {
-    Icon: Layout, // Dashboard Icon
-    label: "Dashboard",
-    href: "/",
-  },
-  {
-    Icon: Search, //Dashboard Icon (Non-Teacher)
-    label: "Browse",
-    href: "/search",
-  },
-];
-
 const teacherRoutes = [
   {
     Icon: LibraryBig, // Teacher Icon Courses
@@ -46,7 +33,7 @@ export const SidebarRoutes = () => {
 
   const isTeacherPage = pathname.includes("/teacher");
 
-  const routes = isTeacherPage ? teacherRoutes : guestRoutes;
+  const routes = teacherRoutes;
 
   return (
     <div className="flex flex-col w-full">
