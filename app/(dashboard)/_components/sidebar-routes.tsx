@@ -1,6 +1,7 @@
 "use client";
 import {
   BarChart2Icon,
+  Home,
   Layout,
   LibraryBig,
   LucideIcon,
@@ -16,6 +17,11 @@ export interface SidebarItemProps {
 }
 
 const teacherRoutes = [
+  {
+    Icon: Home, // Analytics Icon
+    label: "Home",
+    href: "/",
+  },
   {
     Icon: LibraryBig, // Teacher Icon Courses
     label: "Courses",
