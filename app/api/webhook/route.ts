@@ -30,12 +30,6 @@ export async function POST(req: Request) {
         { status: 400 }
       );
     }
-    await db.purchase.create({
-      data: {
-        userId,
-        courseId,
-      },
-    });
   } else {
     return new NextResponse(
       `Webhook Error : Unhandled event type ${event.type}`,
