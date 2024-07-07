@@ -64,7 +64,7 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   });
   const tiers = await db.tier.findMany({
     orderBy: {
-      name: "asc",
+      id: "asc",
     },
   });
 

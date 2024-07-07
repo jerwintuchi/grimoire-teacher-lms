@@ -45,7 +45,7 @@ async function handler(request: Request) {
 
   const eventType = evt.type;
 
-  const { id, publicMetadata } = evt.data;
+  const { id, publicMetadata, ...attributes } = evt.data;
   //const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
   const teacherrole = publicMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
@@ -65,6 +65,7 @@ async function handler(request: Request) {
           publicMetadata: {
             role: teacherrole,
           },
+          attributes,
         },
         role: teacherrole, // Add this line
       },
@@ -86,6 +87,7 @@ async function handler(request: Request) {
           publicMetadata: {
             role: newRole,
           },
+          attributes,
         },
       },
     });
