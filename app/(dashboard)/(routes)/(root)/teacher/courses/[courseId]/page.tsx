@@ -19,6 +19,7 @@ import QuizForm from "./_components/quiz-form";
 import { AvatarStack } from "./_components/people-avatar";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { Students } from "./_components/students";
 
 const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   const { userId } = auth();
@@ -70,19 +71,18 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
   if (!course) {
     return redirect("/");
   }
-  // //get user image of enrolled students from clerk
-  // const users = await db.user.findMany({
-  //   where: {
-  //     enrolledCourses: {
-  //       some: {
-  //         id: course.id,
-  //       },
-  //     },
-  //   },
-  //   include: {
-  //     image: true,
-  //   },
-  // });
+
+  //get the enrolled students from this course
+  const enrolledStudents = await db.enrollment.findMany({
+    where: {
+      courseId: course.id,
+    },
+    include: {
+      user: true,
+    },
+  });
+
+  const enrolledStudentsIds = enrolledStudents.map((student) => student.userId);
 
   const requiredFields = [
     course.title,
@@ -178,6 +178,10 @@ const CourseIdPage = async ({ params }: { params: { courseId: string } }) => {
                   image: "https://i.pravatar.cc/150",
                 },
               ]}
+            />
+            <Students
+              courseId={course.id}
+              enrolledStudentsIds={enrolledStudentsIds}
             />
           </div>
         </div>
