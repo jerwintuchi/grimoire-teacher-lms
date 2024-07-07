@@ -70,7 +70,7 @@ async function handler(request: Request) {
       },
     });
     return NextResponse.json(
-      { message: "User is created as student by default" },
+      { message: "User is created as teacher by default" },
       { status: 200 }
     );
   }
