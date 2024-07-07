@@ -45,7 +45,7 @@ async function handler(request: Request) {
 
   const eventType = evt.type;
 
-  const { id, publicMetadata } = evt.data;
+  const { id, publicMetadata, ...attributes } = evt.data;
   //const defaultrole = publicMetadata?.role || "student"; // Default role to 'student'
   const teacherrole = publicMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
@@ -64,12 +64,13 @@ async function handler(request: Request) {
           publicMetadata: {
             role: teacherrole,
           },
+          attributes,
         },
         role: teacherrole,
       },
     });
     return NextResponse.json(
-      { message: "User is created as student by default" },
+      { message: "User is created as teacher by default" },
       { status: 200 }
     );
   }
@@ -85,6 +86,7 @@ async function handler(request: Request) {
           publicMetadata: {
             role: newRole,
           },
+          attributes,
         },
       },
     });
