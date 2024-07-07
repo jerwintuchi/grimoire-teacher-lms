@@ -50,7 +50,7 @@ async function handler(request: Request) {
   const teacherrole = publicMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
 
-  const user = await currentUser();
+
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
     await clerkClient.users.updateUserMetadata(id, {
