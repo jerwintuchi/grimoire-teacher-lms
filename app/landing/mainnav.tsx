@@ -40,13 +40,6 @@ const MainNav = () => {
                     </Button>
                   </Link>
                 </NavigationMenuLink>
-                <NavigationMenuLink>
-                  <Link href="/sign-up">
-                    <Button className="bg-[#291839] hover:bg-[#853bce] hover:text-black">
-                      Register
-                    </Button>
-                  </Link>
-                </NavigationMenuLink>
               </NavigationMenuContent>
             </NavigationMenuItem>
           </NavigationMenuList>

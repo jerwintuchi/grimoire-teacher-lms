@@ -50,7 +50,6 @@ async function handler(request: Request) {
   const teacherrole = publicMetadata?.role || "teacher";
   let userdata: Prisma.UserCreateInput;
 
-
   //LOGIC FOR FIRST TIME USER CREATION
   if (eventType === "user.created") {
     await clerkClient.users.updateUserMetadata(id, {
@@ -58,6 +57,7 @@ async function handler(request: Request) {
         role: teacherrole,
       },
     });
+    
     await prisma.user.create({
       data: {
         clerkId: id,
@@ -71,7 +71,7 @@ async function handler(request: Request) {
       },
     });
     return NextResponse.json(
-      { message: "User is created as student by default" },
+      { message: "User is created as teacher by default" },
       { status: 200 }
     );
   }
