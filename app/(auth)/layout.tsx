@@ -6,7 +6,9 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
     <>
       <div className="bg-[#13111c]">
         <video
-          src={require("../../public/GrimoireBG.mp4")}
+          src={
+            "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Magic-Book.mp4"
+          }
           autoPlay
           loop
           muted
