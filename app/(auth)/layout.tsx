@@ -10,7 +10,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
           autoPlay
           loop
           muted
-          className="absolute inset-0 w-full h-full object-cover z-0" // Adjust z-index as needed
+          className="absolute inset-0 w-full h-full object-cover z-0" // Adjust z-index as need
         />
         <MainNav />
         <div className="h-[calc(100vh-72px)] flex items-center justify-center bg-[#13111c] no-scroll z-10">
