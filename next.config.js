@@ -10,7 +10,7 @@ const nextConfig = {
 }
 
 module.exports = nextConfig
-
-const withViedos = require("next-videos");
+ 
+const withVideos = require("next-videos");
 
 module.exports = withVideos();
