@@ -7,7 +7,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="bg-[#13111c]">
         <video
           src={
-            "https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Magic-Book.mp4"
+            "https://utfs.io/f/c0b34ca5-bbf4-4b16-aa36-d724f12db3b4-nequxr.mp4"
           }
           autoPlay
           loop
