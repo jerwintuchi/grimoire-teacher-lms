@@ -10,7 +10,7 @@ const LandingPage = () => {
         autoPlay
         loop
         muted
-        className="absolute inset-0 w-full h-full object-cover z-0" // comment
+        className="absolute inset-0 w-full h-full object-cover z-0" // comment for production build
       />
       <div className="bg-black z-10">
         <MainNav />
