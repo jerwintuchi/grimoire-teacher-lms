@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <div className="relative h-screen">
       <video
-        src={require("https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Portal-2.mp4")}
+        src={"https://mylivewallpapers.com/wp-content/uploads/Fantasy/PREVIEW-Portal-2.mp4"}
         autoPlay
         loop
         muted
