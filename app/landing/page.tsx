@@ -6,7 +6,7 @@ const LandingPage = () => {
   return (
     <div className="relative h-screen">
       <video
-        src={require("../../public/PortalBG.mp4")}
+        src={require("../../public/PortalBG.mp4")} 
         autoPlay
         loop
         muted

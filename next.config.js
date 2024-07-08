@@ -13,4 +13,4 @@ module.exports = nextConfig
 
 const withViedos = require("next-videos");
 
-module.exports = withViedos();
+module.exports = withVideos();
