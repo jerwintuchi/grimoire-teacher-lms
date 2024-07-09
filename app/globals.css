@@ -310,6 +310,15 @@ body {
   display: none;
 }
 
+/*----------OTP---FIELDS------------*/
+.cl-otpCodeFieldInput {
+  color: #ffffff;
+}
+/*----------Didn't receive a code?------------*/
+.cl-internal-q2718p {
+  color: rgb(222, 218, 218);
+}
+
  @layer base {
     * {
       @apply border-border;
